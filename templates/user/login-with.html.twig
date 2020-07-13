@@ -1,0 +1,13 @@
+{% set module = 'social-auth' %}
+
+{{ attach_library('social_auth/auth-icons') }}
+
+<div class="block--socialauthlogin">
+{% for social_network in social_networks %}
+    <a class="{{ module }} auth-link" href="{{ path(social_network.route) }}">
+        {% trans %}
+        Login using {{ social_network.name }}
+        {% endtrans %}
+    </a>
+{% endfor %}
+</div>

@@ -1,0 +1,13 @@
+<ul class="nav nav-tabs primary">
+    <li class="nav-item">
+        <a class="nav-link{% if route_name == 'entity.user.canonical' %} active{% endif %}"
+           href="{{ path('entity.user.canonical', {'user': user.id}) }}">{{ 'Overview' | t }}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if route_name == 'entity.user.edit_form' %} active{% endif %}"
+           href="{{ path('entity.user.edit_form', {'user': user.id}) }}">{{ 'Edit profil' | t }}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('user.logout') }}">{{ 'Logout' | t }}</a>
+    </li>
+</ul>

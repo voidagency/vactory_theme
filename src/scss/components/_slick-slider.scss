@@ -1,0 +1,297 @@
+// @module
+// themes/interface/src/scss/modules/_slick.scss
+// Slick
+// -----------------------------------------------------------------------------
+
+$slick-arrows-size: 54px;
+$slick-arrows-size--mobile: 34px;
+$slick-arrows-background: transparent;
+$slick-arrow-color: $black;
+$slick-arrow-hover-color: $white;
+$slick-arrow-border-color: $black;
+$slick-arrow-border-size: 2px;
+$slick-arrow-position-left-right: 0;
+$slick-arrow-icon-size-mobile: 12px;
+$slick-arrow-icon-size: 18px;
+
+$slick-btn-bg-color: $white;
+$slick-btn-border-color: $gray-700 !default;
+
+$slick-dots-height: 15px;
+$slick-dots-width: 15px;
+$slick-dots-radius: 0;
+$slick-dots-border-size: 2px;
+$slick-dots-border-color: $gray-700;
+$slick-dots-margin-top: 16px;
+$slick-dots-items-margin-y: 8px;
+
+// @todo: should this be a module ?
+
+//== Dots
+ul.slick-dots,
+.slick-dots {
+  position: relative;
+  bottom: auto;
+  @include rem(margin, $slick-dots-margin-top auto 0);
+  width: auto;
+
+  li {
+    position: relative;
+    display: inline-block;
+    @include rem(margin, 0 $slick-dots-items-margin-y);
+    width: $slick-dots-width;
+    height: $slick-dots-height;
+    cursor: pointer;
+
+    &.slick-active {
+      button {
+        border-color: $primary;
+
+        &:after {
+          visibility: visible;
+          opacity: 1;
+          transform: scale(1.1);
+          transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+      }
+    }
+
+    button {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      outline: none;
+      border-radius: $slick-dots-radius;
+      background-color: $slick-btn-bg-color;
+      text-indent: -999em;
+      cursor: pointer;
+      position: absolute;
+      border: $slick-dots-border-size solid $slick-dots-border-color;
+      transition: border-color 0.3s ease;
+      padding: 0;
+
+      &:before {
+        display: none;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        visibility: hidden;
+        background: $primary;
+        border-radius: $slick-dots-radius;
+        box-shadow: 0 0 1px $primary;
+        opacity: 0;
+        transform: scale(3);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
+      }
+
+      &:hover,
+      &:focus {
+        border-color: $primary;
+      }
+    }
+  }
+}
+
+//== Arrows
+.slick-arrow {
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  top: 50%;
+  display: block;
+  padding: 0;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  color: $slick-arrow-color;
+  border: $slick-arrow-border-size solid $slick-arrow-border-color;
+  width: $slick-arrows-size--mobile;
+  height: $slick-arrows-size--mobile;
+  outline: none;
+  background: $slick-arrows-background;
+  transition: background .3s, color .3s, border .3s;
+  z-index: 1;
+
+  &:focus {
+    color: $slick-arrow-color;
+    border: $slick-arrow-border-size solid $slick-arrow-border-color;
+  }
+
+  &:before {
+    display: none;
+  }
+
+  &.prev,
+  &.slick-prev {
+    left: $slick-arrow-position-left-right;
+    @include rtl() {
+      right: $slick-arrow-position-left-right;
+      left: auto;
+    }
+  }
+
+  &.next,
+  &.slick-next {
+    right: $slick-arrow-position-left-right;
+    @include rtl() {
+      left: $slick-arrow-position-left-right;
+      right: auto;
+    }
+  }
+
+  [class^="icon-"],
+  [class*=" icon-"] {
+    @include rem(font-size, $slick-arrow-icon-size-mobile);
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    padding: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover {
+    color: $slick-arrow-hover-color;
+    background: $primary;
+    border-color: $primary;
+  }
+}
+
+//== Space for arrows.
+.slick-list {
+  margin: 0 auto;
+
+  .full-slider & {
+    margin: 0;
+  }
+}
+
+.slick-slide:focus {
+  outline: 0;
+}
+
+.slick-initialized .slick-slide {
+  height: 100%;
+}
+
+.slick-dotted.slick-slider {
+  margin-bottom: 0;
+}
+
+.single-item .slick-list {
+  margin: 0;
+}
+
+//== Adjust margin for inside-in components.
+.slick-slide > * {
+  margin-bottom: 0;
+
+  &:not([class]) { // To fix changed of render slick element after update libraries
+    height: 100%;
+    width: 100%;
+
+    > * {
+      width: 100%;
+      max-width: 100%;
+      flex-basis: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.slick-track {
+  height: 100%;
+}
+
+.slick-use-equal-height .slick-track {
+  display: flex;
+
+  .slick-slide {
+    height: auto;
+  }
+}
+
+//== Equal height items.
+.eq-height-slider-items .slick-track {
+  @include row-make-equal-height();
+}
+
+.slick-hide-until-loaded.slick-initialized {
+  visibility: visible;
+}
+
+.slick-hide-until-loaded:not(.slick-initialized) {
+  visibility: hidden;
+  display: flex;
+}
+
+.slick-controls {
+  position: relative;
+  margin: 0 auto;
+  width: calc(100% - 40px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .slick-arrow {
+    position: static;
+    transform: translateY(0);
+
+    &.slick-prev {
+      order: 1;
+    }
+    &.slick-next {
+      order: 3;
+    }
+  }
+  .slick-dots {
+    @include rem(margin-bottom, 16px);
+    position: static;
+    order: 2;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .slick-arrow {
+    width: $slick-arrows-size;
+    height: $slick-arrows-size;
+
+    [class^="icon-"],
+    [class*=" icon-"] {
+      @include rem(font-size, 18px);
+    }
+  }
+  .slick-list {
+    margin: 0 ($slick-arrows-size + 20px);
+  }
+}
+
+// Just for mobile
+@include media-breakpoint-down(md) {
+  .slick-arrows-mobile {
+    .slick-arrow {
+      &.slick-next {
+        right: 20px;
+      }
+
+      &.slick-prev {
+        left: 20px;
+      }
+
+      &.slick-next, &.slick-prev {
+        top: auto;
+        bottom: 0;
+        transform: none;
+      }
+    }
+  }
+}

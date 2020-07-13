@@ -1,0 +1,28 @@
+.page-404,
+.page-403 {
+  @include rem(padding-top, 60px);
+  @include rem(padding-bottom, 60px);
+  text-align: center;
+
+  h2 {
+    @include rem(font-size, 40px);
+    @include rem(line-height, 50px);
+    letter-spacing: 2.5px;
+    @include rem(margin-bottom, 28px);
+  }
+
+  p {
+    @include rem(font-size, 24px);
+    @include rem(line-height, 28px);
+    letter-spacing: 1.5px;
+    color: #7A7A7A;
+    &:not(:last-child) {
+      @include rem(margin-bottom, 40px);
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include rem(padding-top, 80px);
+    @include rem(padding-bottom, 80px);
+  }
+}

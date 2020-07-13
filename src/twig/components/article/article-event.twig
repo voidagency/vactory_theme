@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Article Component.
+ * themes/interface/src/scss/stylesheets/components/article/_article.scss
+ * modules/custom/vactory_event/scss/_event.scss
+ */
+#}
+
+{% extends "@twigComponents/article/article.twig" %}
+
+{% block image_after %}
+
+    {% if date_end|default %}
+        {#<div class="date-pos bg-danger-gradiant">
+            {{ date_end.day_short }}
+            <span>{{ date_end.month_short }}</span>
+        </div>#}
+        <a href="{{ url }}" class="vf-card--event__overlay">
+            <div class="vf-card--event__date date-pos bg-danger-gradiant">
+               {% if date_start|default %}
+                <div class="vf-card--event__date__start">
+                    {{ date_start.day_short }}
+                    <span>{{ date_start.month_short }}</span>
+                </div>
+                {% endif %}
+                {% if date_end|default %}
+                <div class="vf-card--event__date__separator">-</div>
+                <div class="vf-card--event__date__end">
+                    {{ date_end.day_short }}
+                    <span>{{ date_end.month_short }}</span>
+                </div>
+                {% endif %}
+            </div>
+        </a>
+    {% endif %}
+
+{% endblock %}
+
+{% block subtitle %}
+    <span class="badge badge-primary">{{ subtitle.category }}</span>
+    <span class="badge badge-danger">{{ subtitle.city }}</span>
+{% endblock %}

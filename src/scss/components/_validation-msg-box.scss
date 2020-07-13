@@ -1,0 +1,11 @@
+// --- validation message box --- //
+
+.validation-messages-box {
+  list-style: inside;
+  @include rem(padding, 20px);
+  li {
+    div {
+      display: inline;
+    }
+  }
+}

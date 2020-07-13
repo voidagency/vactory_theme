@@ -1,0 +1,19 @@
+{
+  "name": "voidagency/vactory_theme",
+  "description": "Factory is a base theme for Drupal. It has Bootstrap 4, Sass, Gulp, BrowserSync and Font Awesome built-in.",
+  "type": "drupal-theme",
+  "authors": [
+    {
+      "name": "Hamza Bahlaouane",
+      "email": "h.bahlaouane@void.fr",
+      "homepage": "http://void.fr",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://www.void.fr"
+  },
+  "license": "GPL-2.0+",
+  "minimum-stability": "dev",
+  "require": {}
+}

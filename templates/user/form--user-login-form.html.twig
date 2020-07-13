@@ -1,0 +1,42 @@
+<div class="vf-user-login-form card">
+  {{ drupal_block('social_auth_login') }}
+  <div class="form-or-separator">
+    <hr>
+    <h2 class="text-center">{{ 'Se connecter'|t }}</h2>
+    <p>{{ "Pour vous connectez, veuillez saisir votre identifiant et votre mot de passe" | t }}</p>
+  </div>
+  <form {{ attributes }}>
+    {{ element.form_build_id }}
+    {{ element.form_token }}
+    {{ element.form_id }}
+
+    <div class="row login-form">
+      <div class="col-md-12">
+        <div class="input-icon user-icon">
+          {{ element.name }}
+        </div>
+
+      </div>
+      <div class="col-md-12">
+        <div class="input-icon lock-icon">
+          {{ element.pass }}
+        </div>
+
+      </div>
+      <div class="col-md-12">
+        <a class="login-forgot-password" href="{{ path('user.pass') }}">{{ 'Forgot your password?' | t }}</a>
+      </div>
+    </div>
+    {% if element.captcha|default %}
+      <div class="row">
+        <div class="col-md-12 captcha mb-3">
+          {{ element.captcha }}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="actions d-flex align-items-center login-buttons flex-wrap">
+      {{ element.actions.submit }}
+    </div>
+  </form>
+</div>

@@ -1,0 +1,40 @@
+// @placeholder
+// Icon
+//
+// src/scss/utilities/icons/_icon.scss
+// -----------------------------------------------------------------------------
+
+/**
+ * %icon:
+ * Add a custom icon to an element.
+ * ```scss
+ * .my-cta-link {
+ *  @extend %icon;
+ *
+ *  &:before {
+ *    content: $icon-timer;
+ *  }
+ * }
+ * ```
+ */
+
+// @see themes/interface/assets/fonts/icons-font/vactory-icons-font/style.scss for a list of classes.
+// @see themes/interface/assets/fonts/icons-font/vactory-icons-font/variables.scss for a list of variables.
+
+// scss-lint:disable ImportantRule
+%icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'vactory' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// scss-lint:enable ImportantRule

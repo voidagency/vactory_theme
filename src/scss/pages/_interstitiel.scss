@@ -1,0 +1,55 @@
+// Page Layout
+// -----------------------------------------------------------------------------
+
+.bg-turn {
+  display: none;
+}
+
+/* disable orientation: landscape for mobile */
+@media screen and (max-width: map-get($grid-breakpoints, md)) and (orientation: landscape) {
+  .touchevents body.interstitiel-mode {
+    position: fixed;
+
+    .bg-turn {
+      display: block;
+      background: url(../img/iphone-landscape@2x.png) no-repeat center center #fff;
+      background-size: contain;
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      z-index: 99999;
+      top: 0;
+    }
+  }
+}
+
+/* disable orientation: portrait for tablet */
+@media screen and (min-width: map-get($grid-breakpoints, md)) and (max-width: map-get($grid-breakpoints, lg)) and (orientation: portrait) {
+  .touchevents body.interstitiel-mode {
+    position: fixed;
+
+    .bg-turn {
+      display: block;
+      background: url(../img/ipad-portrait@1x.png) no-repeat center center #fff;
+      background-size: contain;
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      z-index: 99999;
+      top: 0;
+    }
+  }
+}
+
+.touchevents body.interstitiel-mode {
+  .bg-turn {
+    .close-interstitiel {
+      cursor: pointer;
+      position: absolute;
+      top: 50px;
+      right: 50px;
+      @include rem(font-size, 40px);
+      color: $black;
+    }
+  }
+}

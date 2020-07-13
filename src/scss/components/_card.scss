@@ -1,0 +1,154 @@
+//card
+.card {
+  height: 100%; // fix for ie
+  border: none;
+  box-shadow: 0 8px 10px 0 rgba(48, 49, 51, 0.1);
+  @include rem(border-radius, 6px);
+  flex-grow: 1;
+
+  &.social-up {
+    position: relative;
+
+    .card-governance-social-media {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      max-width: calc(100% - 40px);
+      margin-top: 0;
+    }
+  }
+
+  .card-image__wrapper,
+  .inline-card__image,
+  .card-image--inline {
+    overflow: hidden;
+  }
+
+  img {
+    width: 100%;
+    transition: transform .4s;
+    backface-visibility: hidden;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    @include rem(padding, 16px);
+
+    .card-text {
+      color: $black;
+      @include rem(font-size, 16px);
+      @include rem(margin-bottom, 30px);
+    }
+
+    .card-title {
+      @include rem(margin-bottom, 8px);
+
+      a {
+        font-weight: bold;
+        @include rem(font-size, 18px);
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+
+    .card-read-more {
+      margin-top: auto;
+
+      a {
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    img:not(.no-effect) {
+      transform: scale(1.14);
+    }
+  }
+}
+
+.card--inline .card-image--inline {
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.date-pos {
+  @include rem(padding, 10px);
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: $white;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.date-pos span {
+  display: block;
+  @include rem(font-size, 30px);
+  @include rem(line-height, 30px);
+}
+
+// fix bugs of cards inside a slick slider
+.slick-slider {
+  .card {
+    width: 100%;
+    height: auto;
+    @include if-ie() {
+      height: 100%; // fix for ie
+    }
+  }
+}
+
+
+@include media-breakpoint-up(sm) {
+  .card-deck {
+    .card {
+      height: auto;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .card--inline {
+    flex-direction: row;
+  }
+
+  .card--inline {
+    &.vf-card--mosaique {
+      .card-image--inline,
+      .card-body--inline {
+        flex-basis: 50%;
+      }
+    }
+    .card-image--inline {
+      flex-basis: 41%;
+      flex-shrink: 0;
+    }
+  }
+
+  .card--inline .card-body--inline {
+    flex-basis: 59%;
+    flex-shrink: 0;
+    height: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}

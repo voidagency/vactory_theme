@@ -1,0 +1,52 @@
+// Variables
+$link-scroll-icon: $icon-scroll;
+$link-scroll-size: 38px;
+$link-scroll-position-bottom: 40px;
+$link-scroll-color: $white;
+$link-scroll-hover-color: $primary;
+
+
+// Animation
+@keyframes moving {
+  0% {
+    bottom: 40px;
+  }
+  50% {
+    bottom: 30px;
+  }
+  100% {
+    bottom: 40px;
+  }
+}
+
+a.link-scroll {
+  display: block;
+}
+
+
+@include media-breakpoint-up(lg) {
+  a.link-scroll {
+    position: absolute;
+    bottom: $link-scroll-position-bottom;
+    left: 50%;
+    transform: translateX(-50%);
+    color: $link-scroll-color;
+    font-size: 0;
+    z-index: 2;
+    transition: color .3s ease-in;
+    display: block;
+    animation: moving 2s 3;
+
+    &:hover {
+      text-decoration: none;
+      color: $link-scroll-hover-color;
+    }
+
+    &:before {
+      content: $link-scroll-icon;
+      @include rem(font-size, $link-scroll-size);
+      font-weight: normal;
+      font-family: 'vactory';
+    }
+  }
+}

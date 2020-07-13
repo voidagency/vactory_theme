@@ -1,0 +1,40 @@
+.maintenance-body {
+  height: calc(100vh - 72px);
+
+  h1 {
+    border-bottom: 1px solid $black;
+    @include rem(padding-bottom, 10px);
+    @include rem(margin-bottom, 15px);
+
+    a {
+      display: inline-block;
+    }
+
+    img {
+      max-width: 170px;
+    }
+  }
+
+  header {
+    background-color: transparent;
+  }
+}
+
+
+@include media-breakpoint-up(lg) {
+  .maintenance-body {
+    height: 100vh;
+
+    main {
+      margin-bottom: 50px;
+    }
+
+    h1 {
+      @include rem(margin-bottom, 25px);
+
+      img {
+        max-width: 270px;
+      }
+    }
+  }
+}

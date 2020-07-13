@@ -1,0 +1,10 @@
+#bootstrap:
+#  version: VERSION
+#  js:
+#    node_modules/bootstrap/dist/js/bootstrap.bundle.min.js: {}
+
+style:
+  version: VERSION
+  css:
+    theme:
+      assets/css/vactory_amp.style.css: {}

@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Theme hooks for Factory.
+ */
+
+// Include all files from the includes directory.
+$includes_path = dirname(__FILE__) . '/includes/*.inc';
+foreach (glob($includes_path) as $filename) {
+  require_once dirname(__FILE__) . '/includes/' . basename($filename);
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function vactory_theme_preprocess(&$variables, $hook) {
+  $variables['base_path'] = base_path();
+  $variables['route_name'] = \Drupal::routeMatch()->getRouteName();
+
+  // Check is front.
+  try {
+    $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+  }
+  catch (Exception $e) {
+    $variables['is_front'] = FALSE;
+  }
+  // Ensure the cache varies correctly (new in Drupal 8.3).
+  $variables['#cache']['contexts'][] = 'url.path.is_front';
+}

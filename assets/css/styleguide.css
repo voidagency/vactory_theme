@@ -1,0 +1,25 @@
+.icon-card {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  min-height: 60px;
+  background-color: #FFFFFF;
+  height: 100%;
+  padding: 20px; }
+  .icon-card i {
+    margin-bottom: 6px;
+    font-size: 22px; }
+  .icon-card span {
+    font-size: 16px;
+    text-align: center; }
+  .icon-card:hover {
+    cursor: pointer;
+    background-color: #2196f3;
+    color: #FFFFFF; }
+
+/*# sourceMappingURL=styleguide.css.map */

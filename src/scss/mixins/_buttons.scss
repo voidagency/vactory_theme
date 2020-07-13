@@ -1,0 +1,241 @@
+// @mixin
+// @todo: upgrade
+// Buttons
+//
+// sites/all/themes/%/scss/mixins/_buttons.scss
+// -----------------------------------------------------------------------------
+@import "rtl";
+
+@mixin factory-button() {
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: $btn-border-width solid transparent;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
+  @include transition($btn-transition);
+
+  // Share hover and focus styles
+  @include hover-focus {
+    text-decoration: none;
+  }
+
+  &:focus,
+  &.focus {
+    outline: 0;
+    box-shadow: $btn-focus-box-shadow;
+  }
+
+  // Disabled comes first so active can properly restyle
+  &.disabled,
+  &:disabled {
+    opacity: $btn-disabled-opacity;
+    @include box-shadow(none);
+  }
+
+  // Opinionated: add "hand" cursor to non-disabled .btn elements
+  &:not([disabled]):not(.disabled) {
+    cursor: pointer;
+  }
+
+  &:not([disabled]):not(.disabled):active,
+  &:not([disabled]):not(.disabled).active {
+    background-image: none;
+    @include box-shadow($btn-active-box-shadow);
+
+    &:focus {
+      @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+    }
+  }
+}
+
+@mixin factory-button-variant($color, $background, $border) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+
+  &:focus,
+  &.focus {
+    color: $color;
+    background-color: darken($background, 10%);
+    border-color: darken($border, 25%);
+  }
+  &:hover {
+    color: $color;
+    background-color: darken($background, 10%);
+    border-color: darken($border, 12%);
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $color;
+    background-color: darken($background, 10%);
+    border-color: darken($border, 12%);
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $color;
+      background-color: darken($background, 17%);
+      border-color: darken($border, 25%);
+    }
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: $background;
+      border-color: $border;
+    }
+  }
+
+  .badge {
+    color: $background;
+    background-color: $color;
+  }
+}
+
+@mixin factory-button-primary() {
+  @include factory-button();
+  @include factory-button-variant($white, $primary, $primary);
+}
+
+@mixin factory-button-secondary() {
+  @include factory-button();
+  @include factory-button-variant($white, $secondary, $secondary);
+}
+
+
+@mixin factory-button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
+  @include button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius);
+  // @note: override button size here.
+}
+
+
+@mixin factory-button-size-lg() {
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+}
+
+@mixin factory-button-size-sm() {
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+}
+
+// Buttons
+//variables
+$button-icon-padding: 3em; //45px;
+
+.btn-icon-left,
+%btn-icon-left {
+  padding-left: $button-icon-padding !important; // scss-lint:disable ImportantRule
+
+  &:before {
+    left: 12px;
+  }
+
+  @include rtl() {
+    padding-right: $button-icon-padding !important; // scss-lint:disable ImportantRule
+    padding-left: $input-btn-padding-x !important; // scss-lint:disable ImportantRule
+
+    &:before {
+      left: auto;
+      right: 12px;
+    }
+  }
+}
+
+.btn-icon-right,
+%btn-icon-right {
+  padding-right: $button-icon-padding !important; // scss-lint:disable ImportantRule
+
+  &:before {
+    right: 12px;
+  }
+
+  @include rtl() {
+    padding-right: $input-btn-padding-x !important; // scss-lint:disable ImportantRule
+    padding-left: $button-icon-padding !important; // scss-lint:disable ImportantRule
+
+    &:before {
+      right: auto;
+      left: 12px;
+    }
+  }
+
+}
+
+// Sass Rules
+// Button with icon
+@mixin btn-icon($icon, $size: 26px, $position: "left") {
+  //@extend %btn; // instead of extend it use both classes btn and btn-icon
+
+  &.btn-icon-left {
+    @extend %btn-icon-left;
+
+    @include rtl() {
+      @extend %btn-icon-right;
+    }
+  }
+
+  &.btn-icon-right {
+    @extend %btn-icon-right;
+
+    @include rtl() {
+      @extend %btn-icon-left;
+    }
+  }
+
+  &:before {
+    @extend %icon;
+    content: $icon;
+    position: absolute;
+    display: block;
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: 0;
+    font-size: inherit; //$size;
+    transition: transform .4s ease-out;
+  }
+
+  &:hover {
+    &:before {
+      color: inherit; //$brand-primary;
+      transition: color .3s ease-out;
+    }
+  }
+
+  &.inverted {
+    &:hover {
+      &:before {
+        color: $gray-600;
+        @include transition(color .3s ease-out);
+      }
+    }
+  }
+}
+
+// Icons
+@mixin shape-icon($icon, $shape: 'rounded', $filled: false, $bgcolor: transparent, $bd: 0, $size: 26px) {
+  @if $filled {
+    //
+  }
+  @if $shape == "" {
+    //
+  }
+}
+
+// Button sizes
+@mixin v-button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
+  padding: $padding-vertical $padding-horizontal !important; // scss-lint:disable ImportantRule
+  font-size: $font-size-base !important; // scss-lint:disable ImportantRule
+  line-height: $line-height-base !important; // scss-lint:disable ImportantRule
+  border-radius: $border-radius !important; // scss-lint:disable ImportantRule
+}

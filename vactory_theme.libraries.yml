@@ -1,0 +1,73 @@
+#bootstrap:
+#  version: VERSION
+#  js:
+#    node_modules/bootstrap/dist/js/bootstrap.bundle.min.js: {}
+
+style:
+  version: VERSION
+  css:
+    theme:
+      ../../libraries/jquery-ui/jquery-ui.min.css: {}
+      ../../libraries/fancybox/dist/jquery.fancybox.css: {}
+      ../../libraries/slick/slick/slick.css: {}
+      ../../libraries/slick/slick/slick-theme.css: {}
+      ../../libraries/animate-css/animate.min.css: {}
+      ../../libraries/bootstrap-select/dist/css/bootstrap-select.css: {}
+      ../../libraries/bootstrap-multiselect/dist/css/bootstrap-multiselect.css: {}
+      ../../libraries/jquery.mb.YTPlayer/dist/css/jquery.mb.YTPlayer.min.css: {}
+      ../../libraries/js-offcanvas/dist/_css/js-offcanvas.css: {}
+      ../../libraries/bootstrap-datepicker/dist/css/bootstrap-datepicker.css: {}
+      ../../libraries/swiper/package/css/swiper.min.css: {}
+style_ltr:
+  version: VERSION
+  css:
+    theme:
+      assets/css/vactory.style.css: {}
+
+style_rtl:
+  version: VERSION
+  css:
+    theme:
+      assets/css/vactory-rtl.style.css: {}
+
+script:
+  version: VERSION
+  js:
+    ../../libraries/lazysizes/lazysizes.min.js: {}
+    ../../libraries/lazysizes/plugins/unveilhooks/ls.unveilhooks.js: {}
+    ../../libraries/bootstrap/dist/js/bootstrap.bundle.min.js: {}
+    ../../libraries/bootstrap-select/dist/js/bootstrap-select.min.js: {}
+    ../../libraries/bootstrap-multiselect/dist/js/bootstrap-multiselect.js: {}
+    ../../libraries/jquery-ui/jquery-ui.min.js: {}
+    ../../libraries/jquery-validation/dist/jquery.validate.min.js: {}
+    ../../libraries/swiper/package/js/swiper.min.js: {}
+    ../../libraries/gsap/src/minified/TweenMax.min.js: {}
+    ../../libraries/gsap/src/minified/TimelineLite.min.js: {}
+    ../../libraries/slick/slick/slick.min.js: {}
+    ../../libraries/fancybox/dist/jquery.fancybox.js: {}
+    ../../libraries/masonry-layout/dist/masonry.pkgd.min.js: {}
+    ../../libraries/responsive-toolkit/dist/bootstrap-toolkit.min.js: {}
+    ../../libraries/waypoints/lib/jquery.waypoints.min.js: {}
+    ../../libraries/WOW/dist/wow.min.js: {}
+    ../../libraries/jquery.mb.YTPlayer/dist/jquery.mb.YTPlayer.js: {}
+    ../../libraries/js-offcanvas/dist/_js/js-offcanvas.pkgd.js: {}
+    ../../libraries/zoom/jquery.zoom.min.js: {}
+    assets/js/vactory.script.js: {}
+    ../../libraries/bootstrap-datepicker/dist/js/bootstrap-datepicker.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/domready
+
+modernizr-custom:
+  # Block the page from being loaded until Modernizr is initialized.
+  header: true
+  remote: https://github.com/Modernizr/Modernizr
+  license:
+    name: MIT
+    url: http://modernizr.com/license/
+    gpl-compatible: true
+  version: "v3.6.0"
+  js:
+    /libraries/modernizr/modernizr-custom.js: { preprocess: 1, weight: -21, minified: true }

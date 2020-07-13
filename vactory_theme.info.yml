@@ -1,0 +1,39 @@
+name: Vactory Theme
+description: Responsive base theme for Drupal.
+screenshot: screenshot.png
+core: 8.x
+engine: twig
+type: theme
+base theme: stable
+
+libraries:
+  - vactory_theme/style
+#  - factory/bootstrap
+  - vactory_theme/script
+  - vactory_theme/modernizr-custom
+
+libraries-override:
+  seven/global-styling: false
+  core/modernizr: false
+
+
+regions:
+  top: 'Top'
+  header:  'Header'
+  bridge: 'Bridge'
+  content: Content
+  footer: Footer
+  bottom: Bottom
+
+stylesheets-remove:
+  - system.theme.css
+  - system.menus.css
+  - system.admin.css
+
+component-libraries:
+  twigComponents:
+    paths:
+      - src/twig/components
+
+ckeditor_stylesheets:
+  - assets/css/ckeditor.style.css

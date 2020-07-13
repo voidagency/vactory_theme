@@ -1,0 +1,50 @@
+// @mixin
+// Grid
+//
+// src/scss/mixins/grid/_equal-height.scss
+// -----------------------------------------------------------------------------
+/**
+ * row-make-equal-height():
+ * mixin set equal height blocks.
+ * ```html
+ * .articles-list > .row {
+ *  @include row-make-equal-height();
+ * }
+ *
+ * HTML
+ * <div class="articles-list">
+ *  <div class="row">
+ *    <article class="card">...</article>
+ *    <article class="card">...</article>
+ *    <article class="card">...</article>
+ *  </div>
+ * </div>
+ * ```
+ */
+@import "ie";
+
+@mixin row-make-equal-height() {
+  display: flex !important; // scss-lint:disable ImportantRule
+  flex-wrap: wrap;
+
+  @include media-breakpoint-down(sm) {
+    display: block;
+  }
+
+  > * {
+    display: flex;
+    height: auto;
+
+    @include if-ie() {
+      flex-direction: column;
+    }
+  }
+
+  &:before {
+    display: none;
+  }
+}
+
+.eq-height {
+  @include row-make-equal-height();
+}

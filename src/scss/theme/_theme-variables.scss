@@ -1,0 +1,51 @@
+// Theme Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+
+// Social Colors
+// ====================================================================
+
+$facebook           : #365397;
+$twitter            : #00a9f1;
+$linkedin           : #006db3;
+$google_plus        : #e0452c;
+$youtube            : #ff3333;
+$vimeo              : #48b6ed;
+$pinterest          : #ce1a19;
+$skype              : #00acf4;
+$instagram          : #396d9a;
+$github             : #2f2f2f;
+$drupal             : #0c76ab;
+$bitbucket          : #205081;
+
+$media-colors: () !default;
+$media-colors: map-merge((
+  "facebook": $facebook,
+  "twitter": $twitter,
+  "linkedin": $linkedin,
+  "google_plus": $google_plus,
+  "youtube": $youtube,
+  "vimeo": $vimeo,
+  "pinterest": $pinterest,
+  "skype": $skype,
+  "instagram": $instagram,
+  "github": $github,
+  "drupal": $drupal,
+  "bitbucket": $bitbucket
+), $media-colors);
+
+// Icomoon path.
+// -----------------------------------------------------------------------------
+$icomoon-font-path: "../fonts/icons-font/vactory-icons-font/fonts" !default;
+
+
+// Transition
+// -----------------------------------------------------------------------------
+$transition-duration: 250ms;
+// Easings
+$ease-in-out-circ: cubic-bezier(.27, .01, .38, 1.06);
+
+// Background color filter 
+$bg-filter-color: $black;

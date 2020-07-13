@@ -1,0 +1,40 @@
+//
+// custom style for the image element
+//
+
+img {
+  max-width: 100%;
+}
+
+.img-responsive {
+  width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+.img-rounded {
+  border-radius: $border-radius;
+}
+
+// custom solution for IE images with the object fit cover
+.img-fluid-wrapper {
+  position: relative;
+  padding-top: 56,25%; // 16:9 Aspect-Ratio
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;;
+  }
+}
+
+
+.card .card-picture-figure {
+  @include aspect-ratio(350, 197);
+}
+
+.card.card--inline .card-picture-figure {
+  @include aspect-ratio(455, 256);
+}

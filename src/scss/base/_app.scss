@@ -1,0 +1,57 @@
+:root {
+  // initialize safe area variables for notch screen
+  // add support for old ios 11 browser iphone X
+  --c-safe-area-inset-top: constant(safe-area-inset-top);
+  --c-safe-area-inset-bottom: constant(safe-area-inset-bottom);
+  --c-safe-area-inset-left: constant(safe-area-inset-left);
+  --c-safe-area-inset-right: constant(safe-area-inset-right);
+
+  // support for ios 12 and above
+  --safe-area-inset-top: env(safe-area-inset-top);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+  --safe-area-inset-left: env(safe-area-inset-left);
+  --safe-area-inset-right: env(safe-area-inset-right);
+}
+
+* {
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+html {
+  position: relative;
+  background: $white;
+
+  body {
+    height: 100%;
+    overflow-x: hidden;
+
+    .mdi:before,
+    .mdi-set {
+      line-height: initial;
+    }
+  }
+  main{
+    overflow-x: hidden;
+  }
+  &.screen-disable__scroll body {
+    overflow: hidden;
+  }
+
+  &.js body.no-scroll {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+body {
+  @include rtl() {
+    text-align: right;
+  }
+}

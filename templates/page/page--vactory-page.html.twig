@@ -1,0 +1,9 @@
+{% extends "page.html.twig" %}
+
+{% block v_page_content %}
+    <div class="page-content">
+        {% if page.content %}
+            {{ page.content }}
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+// @override
+// themes/vactory/src/scss/overrides/_contextual_links.scss
+// Contextual Links
+// -----------------------------------------------------------------------------
+
+// Reposition EntityQueue button.
+[data-contextual-id*="entity_subqueue"] {
+  top: 46px;
+}

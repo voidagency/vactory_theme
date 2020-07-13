@@ -1,0 +1,109 @@
+<div class="user-edit-profile tab-content has-border py-2 py-md-4 px-1 px-sm-2 px-ld-3">
+  <form {{ attributes }}>
+    {{ element.form_build_id }}
+    {{ element.form_token }}
+    {{ element.form_id }}
+
+    <div class="card mb-4">
+      <h5 class="card-header">{{ 'Informations' | t }}</h5>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-4">
+            {% if element.user_picture.widget.0['#default_value'].target_id is not empty %}
+              {% set image_uri = file_object(element.user_picture.widget.0['#default_value'].target_id).uri.value %}
+              {% set url = file_url(image_uri) %}
+              <div class="w-75 mx-auto">
+                <img src="{{ url }}" class="no-effect" alt="">
+              </div>
+            {% else %}
+              <div class="w-75 mx-auto">
+                <img src="/themes/vactory/assets/img/user-avatar.svg" class="no-effect" alt="">
+              </div>
+            {% endif %}
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input-icon user-icon">
+                  {{ element.field_first_name }}
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input-icon user-icon">
+                  {{ element.field_last_name }}
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input-icon phone-icon">
+                  {{ element.field_telephone }}
+                </div>
+              </div>
+              <div class="col-md-12 user-picture-field">
+                {{ element.user_picture }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row w-100">
+          <div class="col-md-12">
+            {{ element.field_about_the_author }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% if is_adviser is defined and is_appointment_enabled is defined %}
+      {% if is_adviser and is_appointment_enabled %}
+        <div class="card mb-4">
+          <h5 class="card-header">{{ 'Mon calendrier' | t }}</h5>
+          <div class="card-body">
+            <div id="adviser-calendar"></div>
+            <div class="adviser-holiday-title-bg" style="display: none"></div>
+            <div id="adviser-holiday-title-wrapper" style="display: none">
+              <div class="form-type-textfield title-before">
+                <label for="adviser-holiday-title">{{ 'Intitulé de congés (Exemple: Congés maladie)' }}</label>
+                <input type="text" name="adviser-holiday-title" class="form-type-textfield form-control">
+                <p class="adviser-title-error" style="display: none"></p>
+              </div>
+              <div class="d-flex justify-content-end mt-3">
+                <button id="adviser-holiday-title-button" class="btn btn-primary">{{ 'Continue' }}</button>
+              </div>
+              <span class="adviser-holiday-title-closer">×</span>
+            </div>
+            <div class="d-none">
+              {{ element.field_adviser_holiday }}
+              {{ element.field_adviser_agencies }}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+
+    <div class="card mb-4">
+      <h5 class="card-header">{{ 'Compte' | t }}</h5>
+      <div class="card-body">
+        <div class="row w-100">
+          <div class="col-md-12">
+            <div class="input-icon at-icon">
+              {{ element.account.mail }}
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="input-icon lock-icon">
+              {{ element.account.current_pass }}
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="input-icon lock-icon">
+              {{ element.account.pass }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      {{ element.actions.submit }}
+    </div>
+  </form>
+
+</div>

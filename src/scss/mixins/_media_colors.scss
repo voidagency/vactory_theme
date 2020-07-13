@@ -1,0 +1,7 @@
+@mixin media-color($prefix,$attribut) {
+    @each $media, $color in $media-colors {
+        .#{$prefix}-#{$media} {
+            #{$attribut} : $color;
+        }
+    }
+}

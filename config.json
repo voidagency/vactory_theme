@@ -1,0 +1,48 @@
+{
+  "name": "vactory",
+  "description": "Responsive base theme for Drupal.",
+  "proxy" : "http://vactory8.local",
+  "css": {
+    "file" : "src/scss/vactory.style.scss",
+    "src": [
+      "src/scss/**/*.scss"
+    ],
+    "custom_module": [
+      "../../modules/custom/**/scss/*.scss"
+    ],
+    "vactory_module": [
+      "../../modules/vactory/**/scss/*.scss"
+    ],
+    "dest": "assets/css",
+    "includePaths": [
+      "./node_modules/"
+    ]
+  },
+  "ckeditor": {
+    "file" : "src/scss/ckeditor.style.scss",
+    "src": [
+      "src/scss/**/*.scss"
+    ],
+    "dest": "assets/css",
+    "includePaths": [
+      "./node_modules/"
+    ]
+  },
+  "js": {
+    "file": "vactory.script.js",
+    "src": [
+      "src/js/_variables.js",
+      "src/js/utilities/*.js",
+      "src/js//behaviors/*.js",
+      "src/js//theme/*.js",
+      "src/js/_init.js"
+    ],
+    "dest": "assets/js"
+  },
+  "images": {
+    "src": [
+      "assets/images/**/*"
+    ],
+    "dest": "assets/images/"
+  }
+}

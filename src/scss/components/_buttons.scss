@@ -1,0 +1,176 @@
+// @component
+// Button
+//
+// themes/%/src/scss/components/_buttons.scss
+// -----------------------------------------------------------------------------
+
+// Variables
+$btn-bg-color: $primary;
+$btn-icon-right: $icon-arrow-right;
+$btn-icon-left: $icon-arrow-left;
+$btn-shadow: 1;
+
+
+.btn {
+  border-radius: 0;
+
+  &:focus, &:active, &:visited {
+    box-shadow: none;
+  }
+
+  &.btn-empty {
+    background-color: transparent;
+    color: $btn-bg-color;
+  }
+
+
+  &.btn-shadow {
+    @include froala-box-shadow($btn-shadow);
+  }
+
+  &.btn-round {
+    border-radius: 20px;
+    min-width: 150px;
+  }
+}
+
+// btn with icon
+
+.btn.icon-right {
+  position: relative;
+  @include rem(padding-right, 45px);
+
+  &::before {
+    content: $btn-icon-right;
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  @include rtl() {
+    padding-right: $btn-padding-x;
+    @include rem(padding-left, 45px);
+
+    &::before {
+      content: $btn-icon-left;
+      right: auto;
+      left: 10px;
+    }
+  }
+}
+
+.btn.icon-left {
+  position: relative;
+  @include rem(padding-left, 45px);
+
+  &::before {
+    content: $btn-icon-left;
+    display: block;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  @include rtl() {
+    padding-left: $btn-padding-x;
+    @include rem(padding-right, 45px);
+
+    &::before {
+      content: $btn-icon-right;
+      left: auto;
+      right: 10px;
+    }
+  }
+}
+
+
+.btn-with-icon,
+%btn-with-icon {
+  &, &.prefix {
+    display: inline-block;
+    @include rem(padding, 13px 15px 13px 58px);
+    border: 1px solid #cbcbcb;
+    border-radius: $btn-border-radius;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
+    font-family: $font-family-sans-serif !important;
+    background-color: $white;
+    color: $black;
+    @include rem(font-size, 18px);
+    line-height: $btn-line-height;
+    position: relative;
+    transition: all 300ms ease-in;
+    text-decoration: none;
+    white-space: normal;
+
+    @include media-breakpoint-down(md) {
+      @include rem(padding-top, 11px);
+      @include rem(padding-bottom, 7px);
+      @include rem(font-size, 16px);
+      @include rem(line-height, 20px);
+      border: 1px solid gray;
+    }
+
+    &:hover {
+      background-color: $primary;
+      border-color: $primary;
+      color: $white;
+      text-decoration: none;
+
+      &:before {
+        border-color: $white;
+      }
+    }
+
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: 17px;
+      transform: translateY(-50%);
+      display: inline-block;
+      @include rem(padding-right, 12px);
+      box-sizing: border-box;
+      border-right: 1px solid #cbcbcb;
+      font-family: 'vactory';
+      transition: border .3s ease-in;
+    }
+
+    &.suffix {
+      @include rem(padding, 16px 58px 11px 15px);
+
+      @include media-breakpoint-down(md) {
+        @include rem(padding-top, 11px);
+        @include rem(padding-bottom, 7px);
+      }
+
+      &:before {
+        left: auto;
+        right: 17px;
+        border-right: 0;
+        border-left: 1px solid #cbcbcb;
+        padding-right: 0;
+        @include rem(padding-left, 12px);
+      }
+    }
+  }
+}
+
+// button go top
+.vf-go-back-top {
+  z-index: 1090;
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  text-decoration: none;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  @include rem(font-size, 12px);
+  padding: 1.5em;
+  display: none;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}

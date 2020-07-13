@@ -1,0 +1,90 @@
+// @component
+// src/scss/components/_banner.scss
+// Banner
+// -----------------------------------------------------------------------------
+
+/***
+ * Banners:
+ */
+
+$banner-bg: #333333 !default;
+$banner-modern-bg: #cfcfcf !default;
+$banner-modern-border: $primary !default;
+$banner-title-font-size: 20px;
+$banner-text-color: $white;
+$banner-text-font-family: $font-family-base;
+.vf-banner {
+  position: relative;
+  min-height: 155px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    h1 {
+      @include rem(margin-top, 20px);
+      @include rem(margin-bottom, 20px);
+      @include rem(font-size, $banner-title-font-size);
+      font-family: $banner-text-font-family;
+      color: $banner-text-color;
+      text-transform: uppercase;
+      font-weight: 400;
+      letter-spacing: 2px;
+    }
+  }
+
+  &__body {
+  }
+
+  // A specific rule for all nested blocks.
+  // Not intended to be used for theming
+  &__blocks {
+  }
+
+  // Both video & image share common styling.
+  &__image,
+  &__video {
+    background-position: left top;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+  }
+
+  &__video {
+    background: $banner-bg;
+  }
+
+  &__image {
+  }
+
+  &__container {
+    @include media-breakpoint-only(xs) {
+      width: 100%;
+    }
+  }
+
+  // Alternate
+  &--default {
+    background-color: $banner-bg;
+  }
+
+  &--effect1 {
+    background-color: $banner-modern-bg;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: $banner-modern-border;
+    }
+  }
+
+}

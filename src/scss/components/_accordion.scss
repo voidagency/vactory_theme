@@ -1,0 +1,114 @@
+// @component
+// Button
+//
+// themes/%/src/scss/components/_accordion.scss
+// -----------------------------------------------------------------------------
+
+// Variables
+
+$accordion-close-icon: $icon-less;
+$accordion-open-icon: $icon-more;
+$accordion-header-p-top: $input-btn-padding-y-lg;
+$accordion-header-p-bottom: $input-btn-padding-y-lg;
+$accordion-header-p-left: $input-btn-padding-x-lg;
+$accordion-header-p-right: $input-btn-padding-x-lg;
+$accordion-header-color: $black;
+$accordion-header-bg: $card-cap-bg;
+
+$accordion-body-p-y: $input-btn-padding-y-lg;
+$accordion-body-p-x: $input-btn-padding-y-lg;
+$accordion-body-bg: $white;
+
+// -----------------------------------------------------------------------------
+
+.accordion {
+  .card-header {
+    background: $accordion-header-bg;
+    padding: 0;
+
+    [data-toggle="collapse"] {
+      display: block;
+      width: 100%;
+      position: relative;
+      padding: $accordion-header-p-top $accordion-header-p-right $accordion-header-p-bottom $accordion-header-p-left;
+      border: 0;
+      text-align: left;
+      text-decoration: none;
+      white-space: normal;
+      color: $accordion-header-color;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      @include rtl() {
+        text-align: right;
+        padding: $accordion-header-p-top $accordion-header-p-left $accordion-header-p-bottom $accordion-header-p-right;
+      }
+
+      &::after {
+        @extend %icon;
+        display: block;
+        content: $accordion-close-icon;
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translate(-50%, -50%);
+        @include rtl() {
+          right: auto;
+          left: 16px;
+        }
+      }
+
+      // collapsed status
+      &.collapsed {
+        &::after {
+          content: $accordion-open-icon;
+        }
+      }
+
+      // prefix icon
+      &.prefix-icon {
+        padding-left: ($accordion-header-p-left * 2);
+
+        &::after {
+          right: auto;
+          left: 16px;
+        }
+
+        @include rtl() {
+          padding-left: $accordion-header-p-left;
+          padding-right: ($accordion-header-p-right * 2);
+          &::after {
+            left: auto;
+            right: 16px;
+          }
+        }
+      }
+
+      // suffix icon
+      &.suffix-icon {
+        padding-right: ($accordion-header-p-right * 2);
+
+        &::after {
+          left: auto;
+          right: 16px;
+        }
+
+        @include rtl() {
+          padding-right: $accordion-header-p-right;
+          padding-left: ($accordion-header-p-left * 2);
+          &::after {
+            left: 16px;
+            right: auto;
+          }
+        }
+      }
+    }
+  }
+
+  .card-body {
+    padding: $accordion-body-p-y $accordion-body-p-x;
+    background: $accordion-body-bg;
+  }
+}

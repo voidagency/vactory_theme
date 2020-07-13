@@ -1,0 +1,132 @@
+// @file
+// SASS partials import
+// -----------------------------------------------------------------------------
+@import "../../../../libraries/bootstrap/scss/functions";
+// Variables.
+// -----------------------------------------------------------------------------
+@import "variables";
+// Fonts
+// -----------------------------------------------------------------------------
+@import "fonts/fonts-rtl";
+// Theme variables
+// -----------------------------------------------------------------------------
+@import "theme/*";
+// Bootstrap.
+// -----------------------------------------------------------------------------
+@import "../../../../libraries/bootstrap/scss/variables";
+@import "../../../../libraries/bootstrap/scss/_mixins";
+@import "../../../../libraries/bootstrap/scss/root";
+@import "../../../../libraries/bootstrap/scss/print";
+@import "../../../../libraries/bootstrap/scss/reboot";
+@import "../../../../libraries/bootstrap/scss/type";
+@import "../../../../libraries/bootstrap/scss/images";
+@import "../../../../libraries/bootstrap/scss/code";
+@import "../../../../libraries/bootstrap/scss/grid";
+@import "../../../../libraries/bootstrap/scss/tables";
+@import "../../../../libraries/bootstrap/scss/forms";
+@import "../../../../libraries/bootstrap/scss/buttons";
+@import "../../../../libraries/bootstrap/scss/transitions";
+@import "../../../../libraries/bootstrap/scss/dropdown";
+@import "../../../../libraries/bootstrap/scss/button-group";
+@import "../../../../libraries/bootstrap/scss/input-group";
+@import "../../../../libraries/bootstrap/scss/custom-forms";
+@import "../../../../libraries/bootstrap/scss/nav";
+@import "../../../../libraries/bootstrap/scss/navbar";
+@import "../../../../libraries/bootstrap/scss/card";
+@import "../../../../libraries/bootstrap/scss/breadcrumb";
+@import "../../../../libraries/bootstrap/scss/pagination";
+@import "../../../../libraries/bootstrap/scss/badge";
+@import "../../../../libraries/bootstrap/scss/jumbotron";
+@import "../../../../libraries/bootstrap/scss/alert";
+@import "../../../../libraries/bootstrap/scss/progress";
+@import "../../../../libraries/bootstrap/scss/media";
+@import "../../../../libraries/bootstrap/scss/list-group";
+@import "../../../../libraries/bootstrap/scss/close";
+@import "../../../../libraries/bootstrap/scss/modal";
+@import "../../../../libraries/bootstrap/scss/tooltip";
+@import "../../../../libraries/bootstrap/scss/popover";
+@import "../../../../libraries/bootstrap/scss/carousel";
+@import "../../../../libraries/bootstrap/scss/utilities";
+// Mixins
+// -----------------------------------------------------------------------------
+@import "mixins/*";
+// Bootstrap RTL
+// -----------------------------------------------------------------------------
+@import "mixins-rtl/*";
+// Icomoon font
+// -----------------------------------------------------------------------------
+@import "../../assets/fonts/icons-font/**/variables.scss";
+@import "../../assets/fonts/icons-font/**/style.scss";
+// Hamburgers Icoon
+// -----------------------------------------------------------------------------
+@import "../../node_modules/hamburgers/_sass/hamburgers/hamburgers";
+// Base styles
+// -----------------------------------------------------------------------------
+@import "base/*";
+// Components.
+// -----------------------------------------------------------------------------
+@import "components/*";
+// Custom blocks for froal
+// -----------------------------------------------------------------------------
+@import "vendor/froala/blocks";
+// Overriding default styles
+// -----------------------------------------------------------------------------
+@import "pages/**/*";
+@import "overrides/*";
+// Drupal modules
+// -----------------------------------------------------------------------------
+@import "modules/**/*";
+// Custom Vactory modules styles
+// -----------------------------------------------------------------------------
+// @import "../../../../modules/vactory/**/scss/*";
+// --- Bootstrap dynamic field --- //
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_dynamic_field/modules/vactory_dynamic_field_bootstrap/scss/*";
+// --- MAP dynamic field --- //
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_dynamic_field/modules/vactory_dynamic_field_map/scss/*";
+// --- Wysiwyg dynamic field -- //
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_dynamic_field/modules/vactory_dynamic_field_wysiwyg_templates/scss/*";
+// --- Vactory Footer --- //
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_footer/scss/_variant1.scss";
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_footer/scss/_variant2.scss";
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_footer/scss/_variant3.scss";
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_footer/scss/_variant4.scss";
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_footer/scss/_variant5.scss";
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_footer/scss/_variant6.scss";
+// --- Vactory Header --- //
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_header/scss/_header-helpers.scss";
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_header/scss/_variant1.scss";
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_header/scss/_variant2.scss";
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_header/scss/_variant3.scss";
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_header/scss/_variant4.scss";
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_header/scss/_variant5.scss";
+// --- Vactory Locator --- //
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_locator/scss/factory_locator.scss";
+
+// --- Vactory Search overolay --- //
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_search_overlay/scss/_variant1.scss";
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_search_overlay/scss/_variant2.scss";
+// --- Vactory Sliders --- //
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_dynamic_field/modules/vactory_dynamic_field_sliders/scss/_variant1.scss";
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_dynamic_field/modules/vactory_dynamic_field_sliders/scss/_variant2.scss";
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_dynamic_field/modules/vactory_dynamic_field_sliders/scss/_variant3.scss";
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_dynamic_field/modules/vactory_dynamic_field_sliders/scss/_variant4.scss";
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_dynamic_field/modules/vactory_dynamic_field_sliders/scss/_variant5.scss";
+// --- Vactory Wysiyg Templates --- //
+//@import "../../../../profiles/vactory_starter_kit/modules/vactory/vactory_wysiwyg_templates/scss/*";
+// --- Vactory Anchor --- //
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_anchor/scss/_anchor.scss";
+// --- Vactory Toolbox --- //
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_toolbox/scss/_toolbox.scss";
+// --- Vactory Digital Report --- //
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_annual_report/scss/_report.scss";
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_appointment/scss/_appointment.scss";
+// --- Vactory Search AutoSuggest --- //
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_search_autosuggestions/scss/_autosuggestions.scss";
+// --- Vactory Espace Privé --- //
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_espace_prive/scss/_user.scss";
+// --- Vactory flash news --- //
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_flash_news/scss/_flash_news.scss";
+// --- Vactory Appointment --- //
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_appointment/scss/_appointment.scss";
+// --- Vactory Notifications --- //
+@import "../../../../profiles/vactory_starter_kit/modules/vactory_notifications/scss/notifications.scss";

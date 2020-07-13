@@ -1,0 +1,161 @@
+@import './teams';
+// Froala Variables
+$block-fdb-padding: 0;
+$block-fdb-background-padding: 100px;
+$block-padding: 100px;
+
+.fdb-block {
+  text-rendering: optimizelegibility;
+  padding: $block-fdb-padding 0;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+
+  &.fdb-block-hasbackground {
+    @include rem(padding, $block-fdb-background-padding 0);
+  }
+
+  &.fdb-viewport {
+    min-height: calc(100% - 2 * #{$block-padding});
+
+    .container {
+      min-height: calc(100% - 2 * #{$block-padding});
+    }
+  }
+
+  &.fdb-image-bg {
+    color: mix($black, $white, 5%);
+  }
+
+  .fdb-box {
+    background: $white;
+    @include rem(padding, 60px 40px);
+    border-radius: 4px;
+    @include froala-box-shadow(1);
+    overflow: hidden;
+  }
+
+  .fdb-touch {
+    border-top: solid 5px $primary;
+  }
+
+  .font-weight-light {
+    font-weight: 300;
+  }
+  .img-ratio {
+    @include aspect-ratio(460, 224);
+  }
+  .img-fluid {
+      width: 100%;
+  }
+  img {
+    + p, + h3, + h4 {
+      @include rem(margin-top, 20px);
+    }
+
+    + h1, + h2 {
+      @include rem(margin-top, 40px);
+    }
+  }
+
+  .col-fill-left {
+    width: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+
+    + div {
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  .col-fill-right {
+    width: 50%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+
+    + div {
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  img.fdb-icon {
+    width: 60px;
+  }
+
+  img.fdb-icon-round {
+    width: 60px;
+    border-radius: 60px;
+  }
+
+  .row-100 {
+    height: 100px;
+    width: 100%;
+  }
+
+  .row-50 {
+    height: 50px;
+    width: 100%;
+  }
+
+  .row-70 {
+    height: 70px;
+    width: 100%;
+  }
+  .slick-slide img {
+    display: inline;
+  }
+}
+
+
+.bg-dark {
+  background-color: #2d313c;
+  color: mix($black, $white, 5%);
+}
+
+.bg-gray {
+  background-color: #fafafa;
+}
+
+.br {
+  @include border-radius(4px);
+  overflow: hidden;
+}
+
+.br-0 {
+  @include border-radius(0 !important);
+}
+
+.heart {
+  color: #df584e;
+  font-weight: bold;
+}
+
+*.text-light {
+  font-weight: 300 !important;
+}
+
+.sl-1 {
+  @include froala-box-shadow(1);
+  z-index: 2;
+}
+
+table {
+  tr.no-border {
+    th, td {
+      border-top: 0;
+    }
+  }
+}

@@ -1,0 +1,147 @@
+/* ---------- Typography ----------- */
+
+body {
+  font-family: $font-base;
+  font-size: 100%;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+/* --- Headings --- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading-a,
+.heading-b,
+.heading-c,
+.heading-d,
+.heading-e,
+.heading-f {
+  font-weight: inherit;
+  margin: 1rem 0 0.5rem;
+}
+
+h1,
+.heading-a {
+  font-size: 1.2rem;
+  color: #000;
+}
+
+h2,
+.heading-b {
+  font-size: 1rem;
+}
+
+h3,
+.heading-c {
+  font-size: 0.9375rem;
+}
+
+h4,
+.heading-d {
+  font-size: 0.875rem;
+}
+
+h5,
+h6,
+.heading-e,
+.heading-f {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+h5,
+.heading-e {
+  font-size: 0.75rem;
+}
+
+h6,
+.heading-f {
+  font-size: 0.625rem;
+}
+
+
+h1 a,
+h2 a {
+  border-bottom: none;
+}
+
+/* --- Text --- */
+
+p {
+  margin: 0 0 1rem;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+blockquote {
+  background: #f7f7f7;
+  border-left: 1px solid #bbb; /* LTR */
+  font-style: italic;
+  margin: 1.3125rem 10px;
+  padding: 0.4375rem 10px;
+}
+
+[dir="rtl"] blockquote {
+  border-left: none;
+  border-right: 1px solid #bbb;
+}
+
+blockquote:before {
+  color: #bbb;
+  content: "\201C";
+  font-size: 2.625rem;
+  line-height: 0.1;
+  margin-right: 0.153125rem; /* LTR */
+  vertical-align: -0.30625rem;
+}
+
+[dir="rtl"] blockquote:before {
+  content: "\201D";
+  margin-left: 0.153125rem;
+  margin-right: 0;
+}
+
+blockquote:after {
+  color: #bbb;
+  content: "\201D";
+  font-size: 2.625rem;
+  line-height: 0.1;
+  vertical-align: -0.39375rem;
+}
+
+[dir="rtl"] blockquote:after {
+  content: "\201C";
+}
+
+blockquote > p:first-child {
+  display: inline;
+}
+
+.text-date,
+.text-date p {
+  color: #9B9B9B;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 300;
+}
+
+.badge {
+  border-radius: 13px;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: $primary;
+  display: inline-block;
+  padding: 0.3125rem 0.5625rem;
+  font-size: 0.6875rem;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+}

@@ -1,0 +1,19 @@
+@mixin v-text-color() {
+  @each $color, $value in $colors {
+    @include color-value($color,$value);
+  }
+  @each $color, $value in $theme-colors {
+    @include color-value($color,$value);
+  }
+} 
+
+@mixin color-value($color,$value) {
+  .text-#{$color} {
+    color: $value;
+    * :not(.btn){
+      color: $value;
+    }
+  }
+}
+
+@include v-text-color();

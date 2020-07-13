@@ -1,0 +1,63 @@
+// prefixName names
+$prefixName: 'hbg' !default;
+
+// variables
+$bgColor: rgba($white,0.10);
+
+// global style
+@import "../../../../../../libraries/hover/scss/effects/2d-buttons-transitions-background/global";
+
+// Fade In
+@import "../../../../../../libraries/hover/scss/effects/2d-buttons-transitions-background/fade-in";
+.#{$prefixName}-fade-in {
+    @include fade-in;
+}
+
+// Fade Out
+@import "../../../../../../libraries/hover/scss/effects/2d-buttons-transitions-background/fade-out";
+.#{$prefixName}-fade-out {
+    @include fade-out;
+}
+
+//fadeindown
+@import "../../../../../../libraries/hover/scss/effects/2d-buttons-transitions-background/fade-in-down";
+.#{$prefixName}-fade-in-down {
+   @include fade-in-down;
+}
+
+//fadeinleft
+@import "../../../../../../libraries/hover/scss/effects/2d-buttons-transitions-background/fade-in-left";
+.#{$prefixName}-fade-in-left {
+    @include fade-in-left;
+}
+
+//bounceindown
+@import "../../../../../../libraries/hover/scss/effects/2d-buttons-transitions-background/bounce-in-down";
+.#{$prefixName}-bounce-in-down {
+    @include bounce-in-down;
+}
+
+//bounceinup
+@import "../../../../../../libraries/hover/scss/effects/2d-buttons-transitions-background/bounce-in-up";
+.#{$prefixName}-bounce-in-up {
+    @include bounce-in-up;
+}
+
+//pulse
+@import "../../../../../../libraries/hover/scss/effects/2d-buttons-transitions-background/pulse";
+.#{$prefixName}-pulse {
+    @include pulse;
+}
+
+//flashborder
+@import "../../../../../../libraries/hover/scss/effects/2d-buttons-transitions-background/flash-border";
+.#{$prefixName}-flash-border {
+    @include flash-border;
+}
+
+//flashborders
+@import "../../../../../../libraries/hover/scss/effects/2d-buttons-transitions-background/flash-borders";
+.#{$prefixName}-flash-borders {
+    @include flash-borders;
+}
+

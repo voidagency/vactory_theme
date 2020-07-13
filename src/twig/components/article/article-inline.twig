@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * Article Component.
+ * themes/interface/src/scss/stylesheets/components/article/_article.scss
+ */
+#}
+{% if classes is not defined %}
+    {% set classes = [] %}
+{% endif %}
+{% set classes = classes|merge(['card','card--inline']) %}
+
+<article {{ attributes.addClass(classes) }}>
+    <div class="card-col position-relative card-image--inline">
+        {{ image }}
+        {% block image_after %}{% endblock %}
+    </div>
+    <div class="card-col position-relative card-body--inline">
+        <div class="card-body">
+            {{ contextual_links }}
+            {{ title_prefix }}
+            <h4{{ title_attributes }} class="card-title">
+                {% if  url is null %}
+                    <span class="link font-semibold text-uppercase font-20">{{ title }}</span>
+                {% else %}
+                    <a href="{{ url }}" rel="bookmark" class="link font-semibold text-uppercase font-20">{{ title }}</a>
+                {% endif %}
+            </h4>
+            {{ title_suffix }}
+            {% if subtitle %}
+                <h6 class="card-subtitle mb-2">
+                    {% block subtitle %}
+                        <span class="badge badge-primary">{{ subtitle }}</span>
+                    {% endblock %}
+                </h6>
+            {% endif %}
+
+          <div class="card-text">{{ noWrapper(intro) }}</div>
+            {% block intro_after %}{% endblock %}
+
+            {% if url is not null %}
+            <div class="card-read-more">
+                <a href="{{ url }}" class="btn btn-primary">{{ read_more }}</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</article>

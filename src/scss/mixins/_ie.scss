@@ -1,0 +1,25 @@
+// @mixin
+// Grid
+//
+// src/scss/mixins/cross-browser/_ie.scss
+// -----------------------------------------------------------------------------
+
+/**
+ * if-ie():
+ * Apply content when IE.
+ * ```scss
+ * .component {
+ *    display: flex;
+ *
+ *  @include if-ie() {
+ *    display: block;
+ *  }
+ * }
+ * ```
+ */
+
+@mixin if-ie() {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}

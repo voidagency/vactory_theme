@@ -1,0 +1,67 @@
+// btn permalink
+$permalink-icon: $icon-arrow-right;
+$font-size-permalink: 16px;
+$line-height-permalink: 16px;
+$color-permalink: $primary;
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+a.link {
+  &:hover,
+  &:focus {
+    color: $primary;
+  }
+}
+
+a.white-link {
+  color: $white;
+
+  &:hover,
+  &:focus {
+    color: $dark;
+  }
+}
+
+a[href^="tel:"] {
+  @include rtl() {
+    direction: ltr;
+  }
+}
+
+.icon-before,
+%icon-before {
+  &:before {
+    content: $permalink-icon;
+    @include rem(font-size, 10px);
+    @include rem(line-height, $line-height-permalink);
+    color: inherit;
+    @include rem(margin-right, 5px);
+    font-family: 'vactory';
+  }
+}
+
+.icon-after,
+%icon-after {
+  &:after {
+    content: $permalink-icon;
+    @include rem(font-size, 10px);
+    @include rem(line-height, $line-height-permalink);
+    color: inherit;
+    @include rem(margin-left, 5px);
+    font-family: 'vactory';
+  }
+}
+
+.permalink,
+%permalink,
+%more-link {
+  //@extend .btn-link;
+  @include rem(font-size, $font-size-permalink);
+  @include rem(line-height, $line-height-permalink);
+  color: $color-permalink;
+
+  @extend %icon-before;
+}

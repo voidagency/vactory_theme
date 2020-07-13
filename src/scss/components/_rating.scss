@@ -1,0 +1,52 @@
+.favorite-star {
+  &::before {
+    font-family: 'vactory';
+    content: $icon-favorite-star; 
+  }
+}
+.checked-full {
+    color: $yellow;
+  }
+.checked-half {
+  position: relative;
+  &::after {
+    content: $icon-half-star; 
+    font-family: 'vactory';
+    position:absolute;
+    left: 0;
+    color: $yellow;
+  }
+}
+.star-vote {
+  position: relative;
+  .rate-fivestar-btn-filled ,
+  .rate-fivestar-btn-empty {
+    background: none;
+    text-indent:inherit;
+    font-size:0;
+    height: auto;
+    &::before {
+      content: $icon-favorite-star; 
+      font-family: 'vactory';
+      font-size: 17px;
+    }
+  }
+  .rate-fivestar-btn-filled {
+    color: $yellow;
+  }
+  .rate-widget-fivestar ul li a {
+    color: $gray-600;
+  }
+  .rate-widget-fivestar ul li.hovering a {
+    background: none;
+    color: $yellow;
+  }
+  .ajax-progress.ajax-progress-throbber .throbber {
+    position: absolute;
+    right: 25%;
+    top: 0;
+  }
+  .ajax-progress {
+    padding: 0;
+  }
+}

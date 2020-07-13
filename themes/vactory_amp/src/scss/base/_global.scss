@@ -1,0 +1,59 @@
+body {
+  background-color: #FFF;
+  color: #000;
+}
+
+.amp-main {
+  background-color: #ffffff;
+}
+
+.hidden {
+  display: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  word-wrap: normal;
+}
+
+.visually-hidden.focusable:active,
+.visually-hidden.focusable:focus {
+  position: static;
+  clip: auto;
+  overflow: visible;
+  height: auto;
+  width: auto;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.news-subtitle-list {
+  margin-bottom: 15px;
+  .card-subtitle {
+    display: inline-block;
+    margin-right: 15px;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    html[dir="rtl"] {
+      margin-left: 15px;
+      margin-right: 0;
+    }
+  }
+
+  .text-date {
+    display: inline-block;
+  }
+}

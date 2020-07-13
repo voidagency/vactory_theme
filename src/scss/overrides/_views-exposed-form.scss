@@ -1,0 +1,123 @@
+$views-exposed-form-m-border: #e1e1e1 !default;
+
+.view-filters {
+  @include media-breakpoint-up(sm) {
+    display: block !important;
+  }
+}
+
+.views-exposed-form > .form-row {
+  align-items: center;
+
+  @include media-breakpoint-only(xs) {
+    flex-basis: 100%;
+    @include rem(margin-bottom, 10px);
+  }
+}
+
+.views-exposed-form > .form-row > .form-actions {
+  margin-bottom: 0;
+  display: flex;
+
+  @include media-breakpoint-only(xs) {
+    @include rem(padding, 0 5px);
+  }
+}
+
+.views-exposed-form {
+  @include rem(margin-bottom, 16px);
+}
+
+.views-exposed-form .btn-reset {
+  @include rem(margin-left, 5px);
+
+  @include rtl() {
+    margin-left: 0;
+    @include rem(margin-right, 5px);
+  }
+}
+
+.views-exposed-form .form-row {
+  @include media-breakpoint-only(xs) {
+    margin-bottom: 0;
+  }
+
+  > .col:not(:last-child),
+  [class*="col-"]:not(:last-child) {
+    @include media-breakpoint-only(xs) {
+      flex-basis: auto;
+      @include rem(margin-bottom, 16px);
+    }
+  }
+}
+
+
+.views-exposed-form {
+  // Form.
+  @include rem(margin, 30px 0);
+
+  // Form groups.
+  > .form-group:not(:last-child) {
+    @include rem(margin-right, 10px);
+
+    @include rtl() {
+      margin-right: 0;
+      @include rem(margin-left, 10px);
+    }
+  }
+
+  // Apply button.
+  > .form-actions > :first-child {
+    /*!*/
+    //@extend %btn-secondary; // scss-lint:disable ExtendDirective
+    @include rem(margin-right, 10px);
+
+    @include rtl() {
+      margin-right: 0;
+      @include rem(margin-left, 10px);
+    }
+  }
+
+  // Datepicker.
+  .form-item.form-type-textfield[class*='date'] {
+    position: relative;
+
+    &::after {
+      @extend %icon; // scss-lint:disable ExtendDirective
+      content: $icon-calendar;
+      display: inline-block;
+      @include rem(font-size, 15px);
+      position: absolute;
+      top: 50%;
+      right: 13px;
+      transform: translateY(-50%);
+
+      @include rtl() {
+        left: 13px;
+        right: auto;
+      }
+    }
+  }
+
+  .form-item > label {
+    @extend %sr-only;
+  }
+}
+
+// Mobile.
+.view-filters {
+  @include media-breakpoint-only(xs) {
+    border: 3px solid $views-exposed-form-m-border;
+    @include rem(padding, 15px);
+    @include rem(margin-bottom, 30px);
+  }
+}
+
+.filter-gear-icon {
+  @include rem(font-size, 20px);
+}
+
+.btn-control-panel {
+  @include rem(margin, 20px 0);
+}
+

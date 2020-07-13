@@ -1,0 +1,63 @@
+// @component
+// themes/interface/src/scss/stylesheets/components/breadcrumb/_breadcrumb.scss
+// Breadcrumb
+// -----------------------------------------------------------------------------
+
+// Breadcrumb.
+// @todo: make this a component > at least prefix it with vf-breadcrumb.
+
+$breadcrumb-font-size: 10px;
+$breadcrumb-line-height: 11px;
+$breadcrumb-link-color: $white;
+
+
+.c-breadcrumb {
+  display: inline-block;
+  margin: 0;
+  @include rem(font-size, $breadcrumb-font-size);
+  @include rem(line-height, $breadcrumb-line-height);
+  @include rem(padding, 10px 12px 8px);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  word-wrap: break-word;
+
+  &.right {
+    float: right;
+  }
+
+
+  .breadcrumb {
+    background-color: transparent;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .breadcrumb a {
+    color: $breadcrumb-link-color;
+  }
+
+  @include rtl() {
+    .breadcrumb-item + .breadcrumb-item {
+      padding-left: 0;
+      padding-right: $breadcrumb-item-padding;
+      &::before {
+        padding-right: 0;
+        padding-left: $breadcrumb-item-padding;
+      }
+    }
+  }
+
+  @include media-breakpoint-only(xs) {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+
+    &.right {
+      float: none;
+    }
+  }
+
+}

@@ -1,0 +1,44 @@
+// @mixin
+// Placeholder
+//
+// src/scss/mixins/forms/_placeholder.scss
+// -----------------------------------------------------------------------------
+
+/**
+ * input-placeholder():
+ * mixin to style input placeholders.
+ * ```scss
+ * .input {
+ *    color: gray;
+ *
+ *  @include input-placeholder() {
+ *    color: red;
+ *  }
+ * }
+ * ```
+ */
+
+// scss-lint:disable VendorPrefix
+@mixin input-placeholder {
+  &.placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+// scss-lint:enable VendorPrefix

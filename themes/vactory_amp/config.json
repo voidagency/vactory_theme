@@ -1,0 +1,21 @@
+{
+  "name": "Vactory AMP",
+  "description": "Responsive base theme for Drupal.",
+  "proxy" : "http://vactory.local",
+  "css": {
+    "file" : "src/scss/vactory_amp.style.scss",
+    "src": [
+      "src/scss/**/*.scss"
+    ],
+    "dest": "assets/css",
+    "includePaths": [
+      "./node_modules/"
+    ]
+  },
+  "images": {
+    "src": [
+      "assets/images/**/*"
+    ],
+    "dest": "assets/images/"
+  }
+}

@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Default template for block.
+ */
+#}
+{%
+set classes = [
+'block',
+bundle ? 'block--' ~ bundle|clean_class,
+id ? 'block--' ~ id|clean_class,
+]
+%}
+{%
+set title_classes = [
+'title',
+]
+%}
+
+<div{{ attributes.addClass(classes)|without('id') }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h4{{ title_attributes.addClass(title_classes) }}>{{ label }}</h4>
+  {% endif %}
+  {{ title_suffix }}
+  <div class="block__content">
+    {% block content %}
+      {{ content }}
+    {% endblock %}
+  </div>
+</div>

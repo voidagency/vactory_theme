@@ -1,0 +1,13 @@
+// @fix notch screen ex: Iphone X
+
+@mixin notch-screen {
+  // support for ios 11
+  @supports (padding-bottom: constant(safe-area-inset-bottom)) {
+    @content;
+  }
+
+  // support for ios 12 and above
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    @content;
+  }
+}

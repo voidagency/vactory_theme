@@ -1,0 +1,20 @@
+.stroke-style {
+  color: transparent;
+  font-weight: 900;
+  -webkit-text-stroke: 1px $primary;
+  -moz-text-stroke: 1px $primary;
+  -ms-text-stroke-width: 1px $primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @include if-ie() {
+    text-shadow: -1px -1px 0 $primary,
+    -1px 1px 0 $primary,
+    -1px 0 0 $primary,
+    1px -1px 0 $primary,
+    1px 1px 0 $primary,
+    1px 0 0 $primary,
+    0 -1px 0 $primary,
+    0 1px 0 $primary;
+  }
+}

@@ -1,0 +1,24 @@
+<form{{ attributes.addClass('row') }}>
+    {{ element.form_build_id }}
+    {{ element.form_token }}
+    {{ element.form_id }}
+
+    {% if not logged_in %}
+        <div class="col-md-6">
+            {{ element.author.name }}
+        </div>
+    {% endif %}
+    <div class="col-md-6">
+        {{ element.subject }}
+    </div>
+    <div class="col-md-12">
+        {{ element.comment_body }}
+    </div>
+    <div class="col-md-6">
+        {{ element.captcha }}
+        <p class="comment-form-note"> * {{ "Votre commentaire ne sera publié qu'après modération"|t }} </p>
+    </div>
+    <div class="col-md-6 text-right">
+        {{ element.actions }}
+    </div>
+</form>

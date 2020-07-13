@@ -1,0 +1,36 @@
+.link {
+  font-family: $font-base;
+}
+a,
+.link {
+  color: $primary;
+  text-decoration: none;
+  border-bottom: 1px dotted;
+}
+
+a:hover,
+a:focus,
+.link:hover,
+.link:focus {
+  color: #018fe2;
+}
+
+a:hover,
+a:active,
+a:focus,
+.link:hover,
+.link:active,
+.link:focus {
+  text-decoration: none;
+  border-bottom-style: solid;
+  color: #018fe2;
+}
+
+
+.btn,
+a.btn {
+  padding: 7px 14px;
+  background: linear-gradient(223.48deg, #B4EC51 0%, #288B6D 100%);
+  border-radius: 25px;
+  color: #fff;
+}

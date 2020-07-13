@@ -1,0 +1,16 @@
+@mixin nav-color($property,$color) {
+    .#{$property} {
+        .block--menu {
+            li {
+              &, a {
+                color: $color;
+              }
+              &:not(:first-child) {
+                &:after {
+                    background-color: $color;
+                }
+              }
+            }
+        }
+    }
+  }

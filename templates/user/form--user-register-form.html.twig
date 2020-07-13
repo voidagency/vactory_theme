@@ -1,0 +1,68 @@
+<div class="vf-user-register-form card p-5 mt-3">
+  <div class="w-100 m-auto">
+    {{ drupal_block('social_auth_login') }}
+  </div>
+  <div class="form-or-separator">
+    <hr>
+    <h2 class="text-center">{{ 'Créer votre compte'|t }}</h2>
+  </div>
+  <div class="tab-content px-0 pb-0 pb-md-1">
+    <form {{ attributes }}>
+      {{ element.form_build_id }}
+      {{ element.form_token }}
+      {{ element.form_id }}
+
+      <div class="mb-2">
+        <h3 >{{ 'Informations personnelles' | t }}</h3>
+        <div>
+          <div class="row">
+            <div class="inline-label col-md-6">
+              <div class="input-icon user-icon">
+                {{ element.field_first_name }}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-icon user-icon">
+                {{ element.field_last_name }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input-icon phone-icon">
+                {{ element.field_telephone }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mb-2">
+        <h3>{{ 'Informations de connexion' | t }}</h3>
+        <div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input-icon mail-icon">
+                {{ element.account.mail }}
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="input-icon lock-icon">
+                {{ element.account.pass }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% if element.captcha|default %}
+        <div class="row">
+          <div class="col-md-12 captcha mb-3">
+            {{ element.captcha }}
+          </div>
+        </div>
+      {% endif %}
+      <div class="actions">
+        {{ element.actions.submit }}
+      </div>
+    </form>
+  </div>
+</div>

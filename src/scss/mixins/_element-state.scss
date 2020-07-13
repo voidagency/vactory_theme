@@ -1,0 +1,14 @@
+/*
+ * element state (hover, focus, active ...)
+ */
+@mixin elstate() {
+  &:hover,
+  &:focus,
+  &:active,
+  &:hover:focus,
+  &:active:focus,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):active:focus {
+    @content;
+  }
+}

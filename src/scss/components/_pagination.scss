@@ -1,0 +1,92 @@
+/*
+ * Pagination Style
+ */
+
+
+ $pagination-border-radius: 50% !default;
+ $pagination-margin-x: 6px !default;
+ $pagination-item-width: 46px !default;
+ $pagination-item-height: 46px !default;
+ $pagination-item-font-size: 20px !default;
+
+ // -----------------------------------------------------------------------------
+
+.pagination {
+  @include rem(margin, 40px 0 !important);
+  padding: 0 !important;
+  flex-wrap: wrap;
+
+  .page-item {
+    margin-left: $pagination-margin-x;
+    margin-right: $pagination-margin-x;
+
+    &:first-child,
+    &:last-child {
+      .page-link {
+        border-radius: $pagination-border-radius;
+      }
+    }
+  }
+
+  .page-link {
+    padding: 0;
+    width: $pagination-item-width;
+    height: $pagination-item-height;
+    border-radius: $pagination-border-radius;
+    font-size: $pagination-item-font-size;
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: $font-family-base;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .pager__item--next .page-link,
+  .pager__item--previous .page-link {
+    padding: 0;
+    font-size: 0;
+    position: relative;
+
+    &::before {
+      content: '';
+      font-size: $pagination-item-font-size;
+      font-family: 'vactory';
+    }
+  }
+
+  .pager__item--previous {
+    .page-link {
+      &::before {
+        content: $icon-chevron-left;
+        @include rtl() {
+          content: $icon-chevron-right;
+        }
+      }
+    }
+  }
+
+  .pager__item--next {
+    .page-link {
+      &::before {
+        content: $icon-chevron-right;
+        @include rtl() {
+          content: $icon-chevron-left;
+        }
+      }
+    }
+  }
+  // hide first and last button
+  // .pager__item--first,
+  // .pager__item--last {
+  //   display: none;
+  // }
+
+}

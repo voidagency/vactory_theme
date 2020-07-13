@@ -1,0 +1,367 @@
+// @page
+// themes/interface/src/scss/stylesheets/pages/_user.scss
+// User
+// -----------------------------------------------------------------------------
+$user-color-extra-light: #ebf3f5;
+$link-facebook-colors: (
+  background: #3B5998,
+  background_alt: #4568b2,
+  border: #3B5998,
+  border_alt: #3B5998,
+  text: #FFF,
+  text_alt: #FFF,
+  icon: #FFF,
+) !default;
+
+$link-google-colors: (
+  background: #fff,
+  background_alt: #fff,
+  border: #c4c4c4,
+  border_alt: #aaa,
+  text: #484848,
+  text_alt: #484848,
+  icon: #dd4e42,
+) !default;
+
+
+.vf-user-navigation--wrapper {
+  @include rem(margin-top, 60px);
+  @include rem(margin-bottom, 60px);
+}
+// Form Buttons.
+.vf-user-login-form .form-submit {
+}
+
+.form-or-separator--text {
+  background-color: $white;
+  display: inline-block;
+  @include rem(padding, 8px);
+  @include rem(font-size, 14px);
+  font-weight: bold;
+  color: $gray-700;
+  margin: 0;
+}
+// Form wrapper.
+.vf-user-login-form,
+.vf-user-register-form {
+  max-width: 737px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 30px 10px 30px;
+  border-color: $primary;
+  background-color: $white;
+
+  .login-buttons {
+    @include media-breakpoint-down(xs) {
+      button, a {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
+.form-or-separator {
+  padding-bottom: 30px;
+  hr {
+    width: 100%;
+    max-width: 723px;
+    margin: 0 auto;
+    border: 0;
+    border-top: 2px solid #F0F0F0;
+    padding-bottom: 34px;
+  }
+  h2 {
+    color: #000000;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: -0.31px;
+    line-height: 35px;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  p {
+    max-width: 601px;
+    margin: 0 auto;
+    color: #8A8A8A;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 28px;
+    text-align: center;
+  }
+
+}
+.block--socialauthlogin {
+  margin-bottom: 35px;
+  .auth-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    background-image: none;
+    margin: 0 auto;
+    text-rendering: optimizeLegibility;
+    position: relative;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 25px;
+    padding: 10px 20px;
+    border-width: 2px;
+    border-style: solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s ease-in;
+    max-width: 376px;
+    &::before {
+      @extend %icon;
+      font-size: 22px;
+      margin-right: 18px;
+
+    }
+    &[href*="facebook"] {
+      color: #36549C;
+      background-color: $white;
+      border-color: #36549C;
+      border-radius: 8px;
+      &:hover {
+        color: $white;
+        background-color: #36549C;
+      }
+      &:before {
+        content: $icon-facebook-carre;
+      }
+    }
+    &[href*="google"] {
+      background: map-get($link-google-colors, background) !important;
+      border-color: map-get($link-google-colors, border) !important;
+      color: map-get($link-google-colors, text) !important;
+      &:before {
+        content: $icon-googleplus;
+        color: map-get($link-google-colors, icon) !important;
+      }
+      &:hover,
+      &:focus {
+        background: map-get($link-google-colors, background_alt) !important;
+        border-color: map-get($link-google-colors, border_alt) !important;
+        color: map-get($link-google-colors, text_alt) !important;
+      }
+    }
+  }
+}
+
+.vf-user-login-form,
+.vf-user-register-form,
+.user-edit-profile {
+  .skinned-control.checkbox {
+    padding-left: 0;
+  }
+  .input-icon {
+    .form-group.form-item {
+      position: relative;
+      > label {
+        display: none;
+      }
+      input {
+        height: 57px;
+        border: 2px solid #F0F0F0;
+        background-color: #F8F8F8;
+        border-radius: 8px;
+        margin-bottom: 16px;
+        font-size: 16px;
+        &:focus {
+          border-color: $primary;
+          outline: none;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+  .image-widget {
+    .file--image, .file-size, .form-type-submit  {
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+  }
+  .field--type-text-long {
+    .filter-wrapper {
+      display: none;
+    }
+  }
+}
+.login-form,
+.registre-form{
+  margin-bottom: 34px;
+  .login-input {
+    height: 57px;
+    border: 2px solid #F0F0F0;
+    background-color: #F8F8F8;
+    border-radius: 8px;
+    margin-bottom: 16px;
+
+    &__icon {
+      padding: 17px 15px;
+      position: relative;
+      height: 100%;
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        background-color: rgba(#9B9B9B, 0.3);
+        height: 25px;
+        width: 2px;
+      }
+      i {
+        font-size: 20px;
+        color: #9B9B9B;
+      }
+    }
+    .form-group {
+      margin-bottom: 0;
+      height: 100%;
+      max-height: 100%;
+      label {
+        display: none;
+      }
+    }
+    input {
+      &, &::placeholder {
+        color: #9B9B9B;
+        font-size: 20px;
+        letter-spacing: 0;
+        line-height: 25px;
+      }
+      &, &:focus, &:active, &:hover {
+        border: none;
+        background: none;
+        outline: none;
+        box-shadow: none;
+      }
+    }
+  }
+  .login-forgot-password {
+    color: $primary;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 18px;
+    text-align: right;
+    font-weight: normal;
+  }
+}
+.login-buttons {
+  button, a {
+    margin-right: 17px;
+    padding: 15px 43px;
+  }
+}
+
+
+@include media-breakpoint-up(md) {
+  // Form wrapper.
+  .vf-user-login-form,
+  .vf-user-register-form {
+    padding: 30px 20px 30px;
+  }
+  .vf-user-login-form,
+  .vf-user-register-form,
+  .user-edit-profile {
+    .input-icon {
+      &.phone-icon {
+        .form-group.form-item:before {
+          content: $icon-phone;
+        }
+      }
+      &.mail-icon {
+        .form-group.form-item:before {
+          content: $icon-at;
+        }
+      }
+      &.user-icon {
+        .form-group.form-item:before {
+          content: $icon-user;
+        }
+      }
+      &.lock-icon {
+        .form-group.form-item:before {
+          content: $icon-lock;
+        }
+      }
+      .form-group.form-item {
+        position: relative;
+        > label {
+          display: none;
+        }
+        &:before {
+          content: $icon-at;
+          font-size: 20px;
+          color: #9B9B9B;
+          position: absolute;
+          top: 18px;
+          left: 5px;
+          width: 50px;
+          border-right: 2px solid rgba(#9B9B9B, 0.3);
+          display: flex;
+          height: auto;
+          justify-content: center;
+          font-family: 'vactory';
+        }
+        input {
+          height: 57px;
+          padding-left: 60px;
+          font-size: 20px;
+          line-height: 25px;
+        }
+      }
+    }
+  }
+  .block--socialauthlogin {
+    margin-bottom: 35px;
+    .auth-link {
+      font-size: 20px;
+      line-height: 25px;
+      padding: 14px 42px;
+      max-width: 376px;
+      &::before {
+        font-size: 22px;
+        margin-right: 18px;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .vf-user-login-form,
+  .vf-user-register-form {
+    padding: 48px 41px 56px;
+  }
+  .form-or-separator {
+    padding-bottom: 55px;
+    hr {
+      padding-bottom: 34px;
+    }
+    h2 {
+      font-size: 35px;
+      line-height: 54px;
+    }
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .vf-user-login-form,
+  .vf-user-register-form,
+  .user-edit-profile {
+    .actions {
+      a, button {
+        display: block;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+}

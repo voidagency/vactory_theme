@@ -1,0 +1,250 @@
+// Variables
+$bar-tabs-border-color: transparent;
+$bar-tabs-nav-active-color: $black;
+$bar-tabs-nav-bg: #02afbd;
+$bar-tabs-nav-bg-active: #fedf36;
+$bar-tabs-nav-color: $white;
+$bar-tabs-padding-top-mobile: 100px;
+
+// Il faut ajouter ce style dans helper or global
+.overflow-y {
+  overflow-y: hidden;
+}
+
+.bar-tabs {
+  @extend .container;
+
+  .bar-tab-head {
+    position: fixed;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9;
+
+    ul {
+      border-bottom: 1px solid $bar-tabs-border-color;
+      display: flex;
+      flex-wrap: wrap;
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+
+      li {
+        flex: 1;
+        text-align: center;
+        border: 1px solid transparent;
+        color: $bar-tabs-nav-color;
+        display: block;
+        @include rem(padding, 6px 19px);
+        background-color: $bar-tabs-nav-bg;
+        border-radius: 0;
+
+        &:not(:last-child) {
+          border-right-color: $black;
+        }
+
+        a {
+          color: $bar-tabs-nav-color;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          &:before {
+            display: inline-block;
+            @include rem(margin-bottom, 5px);
+          }
+        }
+
+        &.active {
+          background-color: $bar-tabs-nav-bg-active;
+          color: $bar-tabs-nav-active-color;
+          @include rem(margin-bottom, -1px);
+
+          a {
+            color: $bar-tabs-nav-active-color;
+          }
+        }
+      }
+    }
+
+    ///
+  }
+
+  .bar-tab-content {
+    background-color: $white;
+
+    > div {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      height: 100%;
+      width: 100%;
+      transform: translateY(100%);
+      transition: transform 500ms ease-in;
+      display: block;
+      background-color: $white;
+
+      &:first-child {
+        .front & {
+          position: static;
+          height: auto;
+          transform: none;
+          display: block;
+        }
+      }
+
+      &.active {
+        transform: translateY(0);
+        @include rem(padding-top, $bar-tabs-padding-top-mobile);
+        background-color: $white;
+        z-index: 1;
+
+        &:first-child {
+          .front & {
+            transform: none;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+.vh-sticky-tab-bar-close {
+  &.is-open {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  @include rem(padding-left, 20px);
+  @include rem(padding-right, 20px);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 500ms ease-in, visibility 500ms ease-in;
+
+  a {
+    display: inline-block;
+    position: relative;
+    @include rem(padding-right, 25px);
+    @include rem(font-size, 18px);
+    font-weight: 600;
+    color: $black;
+
+    &:hover {
+      color: $primary;
+    }
+
+    &:before {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .bar-tabs {
+    &.sticky-bar-tabs {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      transition: none;
+      background-color: transparent;
+      z-index: 9999;
+      transform: translateY(100%);
+
+      &.sticky-bar-bottom {
+        transform: translateY(0);
+        transition: transform 500ms ease-in;
+      }
+
+      &.sticky-bar-top {
+        transform: translateY(100%);
+        transition: transform 500ms ease-in;
+      }
+    }
+
+    .bar-tab-head {
+      display: inline-block;
+      position: static;
+      width: auto;
+
+      ul {
+        li {
+          flex: unset;
+
+          &.active {
+            position: relative;
+
+            &:before {
+              content: '';
+              display: block;
+              position: absolute;
+              top: auto;
+              right: auto;
+              left: 50%;
+              bottom: -8px;
+              width: 0;
+              height: 0;
+              border-style: solid;
+              border-width: 8px 8px 0 8px;
+              border-color: $bar-tabs-nav-bg-active transparent transparent transparent;
+              z-index: 1;
+              transform: translateX(-50%);
+            }
+          }
+
+          a {
+            position: relative;
+            display: inline-block;
+            @inlude rem(padding-left, 30px);
+            &:before {
+              position: absolute;
+              top: 50%;
+              left: 0;
+              transform: translateY(-50%);
+            }
+          }
+        }
+      }
+    }
+
+    .bar-tab-content {
+      background-color: $white;
+
+      > div {
+        @include rem(padding, 16px 12px);
+        display: none;
+        position: static;
+        height: auto;
+        transform: none;
+
+        &.active {
+          @include rem(padding-top, 12px);
+          transform: none;
+          transition: none;
+        }
+
+        &.show {
+          display: block;
+        }
+      }
+    }
+  }
+}

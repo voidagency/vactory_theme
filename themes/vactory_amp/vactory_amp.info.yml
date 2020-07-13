@@ -1,0 +1,10 @@
+name: Vactory AMP
+type: theme
+base theme: amptheme
+description: AMP version of Vactory theme.
+package: Custom
+core: 8.x
+regions:
+  header: Header
+  content: Content
+  footer: Footer

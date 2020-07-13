@@ -1,0 +1,26 @@
+// ajax loader icon
+.ajax-progress-fullscreen {
+  opacity: 1;
+  width: 100px;
+  height: 100px;
+  background-size: 60px 60px;
+  background-color: transparent;
+  background-image: url('../img/loader.gif');
+}
+
+.ajax-progress.ajax-progress-throbber {
+  display: inline-flex;
+  align-items: center;
+  .throbber {
+    display: inline-block;
+    padding: 0;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/loader.gif);
+    background-size: contain;
+  }
+  .message {
+    // display: none;
+  }
+}

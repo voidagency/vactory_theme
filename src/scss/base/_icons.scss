@@ -1,0 +1,291 @@
+// @component
+// sites/all/themes/starter1/scss/components/_prefix-icon.scss
+// Icon
+// -----------------------------------------------------------------------------
+
+$icon-player-bg: rgba(0, 0, 0, 0.32);
+
+.btn-icon {
+  &.download {
+    @include btn-icon($icon-download);
+  }
+
+  &.search {
+    @include btn-icon($icon-search);
+  }
+
+  &.arrow-preview {
+    @include btn-icon($icon-arrow-left);
+
+    &:before {
+      @include rtl() {
+        margin-top: 2px;
+        transform: translateY(-50%) scaleX(-1);
+      }
+    }
+  }
+
+  &.arrow-next {
+    @include btn-icon($icon-arrow-forward);
+
+    &:before {
+      @include rtl() {
+        margin-top: 2px;
+        transform: translateY(-50%) scaleX(-1);
+      }
+    }
+  }
+}
+
+// Icons as Prefix & Suffix
+[class*="v_icon-"]:before {
+  // @todo: Disable ExtendDirective for all ?
+  @extend %icon; // // scss-lint:disable ExtendDirective
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: inherit;
+  color: inherit;
+}
+
+[class*="prefix-icon-"],
+[class*="suffix-icon-"] {
+  &.positioned-icon {
+    [class^="icon-"] {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+// Input icons
+// -------------------------
+.container-inline div.form-item--icon {
+  @include media-breakpoint-only(xs) {
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+.form-item--icon {
+  position: relative;
+
+  [class^="icon-"] {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: inherit;
+    color: inherit;
+  }
+
+  &.form-item--icon-prefix {
+    [class^="icon-"] {
+      left: $input-btn-padding-x;
+
+      @include rtl() {
+        left: auto;
+        right: $input-btn-padding-x;
+      }
+    }
+
+    input {
+      padding-left: $input-btn-padding-x * 2;
+
+      @include rtl() {
+        padding-left: $input-btn-padding-x;
+        padding-right: $input-btn-padding-x * 2;
+      }
+    }
+
+  }
+
+  &.form-item--icon-suffix {
+    [class^="icon-"] {
+      right: $input-btn-padding-x;
+
+      @include rtl() {
+        right: auto;
+        left: $input-btn-padding-x;
+      }
+    }
+
+    input {
+      padding-right: $input-btn-padding-x * 2;
+
+      @include rtl() {
+        padding-right: $input-btn-padding-x;
+        padding-left: $input-btn-padding-x * 2;
+      }
+    }
+  }
+}
+
+[class*="prefix-icon-"],
+[class*="suffix-icon-"] {
+  [class^="icon-"] {
+    font-size: inherit;
+    color: inherit;
+  }
+}
+
+[class*="prefix-icon-"] {
+  [class^="icon-"] {
+    margin-right: 10px;
+
+    @include rtl() {
+      margin-right: auto;
+      margin-left: 10px;
+    }
+  }
+
+  &.positioned-icon {
+    padding-left: 40px;
+
+    [class^="icon-"] {
+      left: 14px;
+
+      @include rtl() {
+        right: 14px;
+        left: auto;
+      }
+    }
+  }
+}
+
+[class*="suffix-icon-"] {
+  [class^="icon-"] {
+    margin-left: 10px;
+
+    @include rtl() {
+      margin-right: 10px;
+      margin-left: auto;
+    }
+  }
+
+  &.positioned-icon {
+    padding-right: 40px;
+
+    [class^="icon-"] {
+      right: 14px;
+
+      @include rtl() {
+        right: auto;
+        left: 14px;
+      }
+    }
+  }
+}
+
+// Player icon
+// @deps: .center-axis
+// Usage: <a href="#" class="youtube-link"><i class="icon-play center-axis is-player"></i></a>
+// .youtube-link should have position: relative
+i.icon-play.is-player {
+  color: $white;
+  border: 3px solid $white;
+  border-radius: 50%;
+  padding: 5px;
+  transition: border-color .3s, background .3s, color .3s;
+  width: 66px;
+  height: 66px;
+
+  &:hover {
+    color: $white;
+    background: $icon-player-bg;
+    border-color: $black;
+  }
+
+  &:before {
+    font-size: 50px;
+  }
+}
+
+//
+// Translate Most used icon
+//
+html[dir=rtl] {
+  .icon-chevron-left {
+    &::before {
+      content: $icon-chevron-right;
+    }
+  }
+
+  .icon-chevron-right {
+    &::before {
+      content: $icon-chevron-left;
+    }
+  }
+
+  .icon-arrow_back {
+    &:before {
+      content: $icon-arrow_forward;
+    }
+  }
+
+  .icon-arrow_forward {
+    &:before {
+      content: $icon-arrow_back;
+    }
+  }
+  .icon-quote-left {
+    &:before {
+      content: $icon-quote-right;
+    }
+  }
+
+  .icon-quote-right {
+    &:before {
+      content: $icon-quote-left;
+    }
+  }
+
+  .icon-caret-right {
+    &:before {
+      content: $icon-caret-left;
+    }
+  }
+
+  .icon-caret-left {
+    &:before {
+      content: $icon-caret-right;
+    }
+  }
+
+  .icon-arrow-left--circle {
+    &:before {
+      content: $icon-arrow-right--circle;
+    }
+  }
+
+  .icon-arrow-right--circle {
+    &:before {
+      content: $icon-arrow-left--circle;
+    }
+  }
+
+  .icon-arrow-left {
+    &:before {
+      content: $icon-arrow-right;
+    }
+  }
+
+  .icon-arrow-right {
+    &:before {
+      content: $icon-arrow-left;
+    }
+  }
+  
+  .icon-chevron-left-circle {
+    &:before {
+      content: $icon-arrow-preview;
+    }
+  }
+
+  .icon-chevron-right-circle {
+    &:before {
+      content: $icon-chevron-right-circle;
+    }
+  }
+
+}

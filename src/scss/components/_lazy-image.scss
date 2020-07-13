@@ -1,0 +1,6 @@
+.lazy-wrapper {
+  @include aspect-ratio(16, 9);
+}
+.lazy-small-square {
+  @include aspect-ratio(142, 142);
+}

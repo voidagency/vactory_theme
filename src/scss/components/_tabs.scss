@@ -1,0 +1,52 @@
+// @module
+// themes/vactory/src/scss/_tabs.scss
+// Tabs
+// -----------------------------------------------------------------------------
+
+$nav-link-color: $primary;
+$nav-link-active-color: $black;
+$nav-link-background: transparent;
+$nav-link-active-background: $white;
+
+$tab-content-background: $white;
+$tab-content-padding-y: 16px;
+$tab-content-padding-x: 12px;
+
+
+.nav-tabs {
+
+  // nav link
+  .nav-link {
+    color: $nav-link-color;
+    background: $nav-link-background;
+
+    &.active {
+      background: $nav-link-active-background;
+      color: $nav-link-active-color;
+    }
+  }
+}
+
+.tab-content {
+  @include rem(padding, $tab-content-padding-y $tab-content-padding-x);
+  background-color: $tab-content-background;
+
+  // with borders
+  &.has-border {
+    border: 1px solid $gray-300;
+    border-top: 0;
+  }
+
+}
+
+// verticale tabs
+.nav-pills {
+
+  .nav-link {
+    color: $nav-link-color;
+
+    &.active {
+      color: $nav-link-active-color;
+    }
+  }
+}

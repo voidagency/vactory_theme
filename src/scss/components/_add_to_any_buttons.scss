@@ -1,0 +1,91 @@
+$icon-color:$white;
+$icon-color-hover:$secondary;
+$icon-fixed-color:$primary;
+$icon-position-top:206px;
+
+.vf-addtoany-fixed {
+  &.block--addtoanybuttons {
+    position: absolute;
+    @include rem(top, $icon-position-top);
+    @include rem(left, 6px);
+    z-index: 9;
+    &.right {
+      @include rem(right, 6px);
+      left: inherit;
+    }
+    .addtoany_list {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      a {
+        @include rem(margin-bottom, 22px);
+      }
+      [class*="icon-"] {
+        color:$icon-color;
+        font-size:23px;
+        &:hover {
+          color: $icon-color-hover;
+        }
+      }
+    }
+    &.buttons-fixed {
+      position: fixed;
+      top: 50%;
+      @include rem(left, -27px);
+      &.fade-left {
+        @include rem(left, 6px);
+        transition: left 1s;
+      }
+      .addtoany_list {
+        [class*="icon-"]  {
+          color: $icon-fixed-color;
+          &:hover {
+            color: $icon-color-hover;
+          }
+        }
+      }
+
+      &.right {
+        @include rem(right, -27px);
+        left: inherit;
+        &.fade-left {
+          left: inherit;
+          @include rem(right, 6px);
+          transition: right 1s;
+        }
+      }
+    }
+  }
+}
+
+.block--addtoanybuttons {
+  .addtoany_list {
+    [class*="icon-"] {
+      span {
+        display:none;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .vf-addtoany-fixed {
+    &.block--addtoanybuttons {
+      @include rem(left, 24px);
+      &.right {
+        @include rem(right, 24px);
+      }
+      &.buttons-fixed {
+        &.fade-left {
+          @include rem(left, 24px);
+        }
+        &.right {
+          &.fade-left {
+            @include rem(right, 24px);
+          }
+        }
+      }
+    }
+  }
+}
+
