@@ -36,9 +36,9 @@ node_body_class ? node_body_class,
 %}
 
 {% if html_attributes['dir'] == 'ltr' %}
-  {{ attach_library('vactory/style_ltr') }}
+  {{ attach_library('vactory_theme/style_ltr') }}
 {% elseif html_attributes['dir'] == 'rtl' %}
-  {{ attach_library('vactory/style_rtl') }}
+  {{ attach_library('vactory_theme/style_rtl') }}
 {% endif %}
 
 <!DOCTYPE html>
