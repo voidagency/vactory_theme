@@ -1,0 +1,23 @@
+@keyframes sticky-up {
+  0% { opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.sticky-bloc {
+  iframe {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  &.sticky {
+    position: fixed;
+    z-index: 2;
+    bottom: 40px;
+    right: 20px;
+    width: 260px;
+    height: 145px;
+    box-shadow: 3px 5px 13px 0 rgba(0,0,0,0.12);
+    transform: translateY(100%);
+    animation: sticky-up .5s ease forwards;
+  }
+}

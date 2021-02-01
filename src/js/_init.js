@@ -1,11 +1,11 @@
 //== Init
 //
 //## Load custom utilities.
-(function (domready, Drupal, drupalSettings) {
+(function ($, Drupal, drupalSettings) {
 
   "use strict";
 
-  domready(function () {
+  $(document).ready(function () {
     Drupal.vactory.utility.wow();
     Drupal.vactory.utility.sliders();
     Drupal.vactory.utility.animateNumbers();
@@ -29,6 +29,8 @@
     Drupal.vactory.utility.formValidation();
     Drupal.vactory.utility.addToAnyButton();
     Drupal.vactory.utility.satisfactionForm();
+    Drupal.vactory.utility.stickyBlock();
+    Drupal.vactory.utility.imgtovideo();
   });
 
-})(domready, Drupal, window.drupalSettings);
+})(jQuery, Drupal, window.drupalSettings);

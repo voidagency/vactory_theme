@@ -1,0 +1,111 @@
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+$webkit-autofill-color: $input-color !default;
+/* overrides webkit autofill style */
+/* Change autocomplete styles in WebKit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: $webkit-autofill-color;
+  color: $webkit-autofill-color !important;
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+/* -------------------------------------------------------------------------- */
+
+
+@include media-breakpoint-down(lg) {
+  form {
+    label.label-inline {
+      display: inline-block;
+    }
+  }
+}
+
+
+// form group with fieldset & legend
+fieldset.form-group {
+  legend {
+    font-size: $font-size-base;
+    margin-bottom: $label-margin-bottom;
+  }
+}
+
+
+// fix icheck padding
+.form-check {
+  div[class^="icheckbox_"],
+  div[class^="iradio_"] {
+    margin-left: -($form-check-input-gutter);
+  }
+}
+
+// input fixes
+input::-ms-clear,
+input::-ms-tooltip {
+	display: none;
+	visibility: hidden;
+}
+
+// Fix Firefox size attribute width
+input[size] {
+  min-width: 0;
+}
+
+input[type=number] {
+  /* Firefox */
+  -moz-appearance: textfield !important;
+
+  /* Chrome */
+  &::-webkit-inner-spin-button,
+	&::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Opéra*/
+  &::-o-inner-spin-button {
+    -o-appearance: none;
+    margin: 0;
+  }
+}
+
+input[type="submit"] {
+	text-align: center;
+}
+/*rtl:raw:
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+  direction: rtl;
+  text-align: right;
+  display: flex;
+  align-items: center;
+}
+input::-webkit-datetime-edit {
+  order: 2;
+}
+input[type="date" i]::-webkit-calendar-picker-indicator {
+  order: 1;
+  margin-left: 0;
+  margin-right: 24px
+}
+input,
+select,
+textarea {
+  direction: rtl;
+  text-align: right;
+}
+*/
+
+
+.input-daterange {
+  input {
+    text-align: center;
+  }
+}

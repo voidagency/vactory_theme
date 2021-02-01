@@ -15,6 +15,7 @@
         } else if (event.target.readyState === 'complete') {
           // The page is fully loaded.
           document.querySelector('body').classList.add('domLoaded');
+          // document.querySelector('body').classList.remove('no-scroll');
         }
       });
     }

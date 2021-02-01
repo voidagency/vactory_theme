@@ -1,0 +1,36 @@
+/* -------------------------------------------------------------------------- */
+.form-select.form-control:not(.lang-dropdown-select-element) {
+  height: auto !important;
+  min-width: 260px;
+  max-width: 100%;
+  background-image: url(../img/arrow-down.svg);
+  background-color: #F5F5F5;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 12px) center;
+  /*rtl:raw:
+  background-position: 12px center;
+  */
+  background-size: auto 10px;
+  padding-right: 40px;
+  cursor: pointer;
+  outline: 0;
+
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  &:-moz-focusring {
+    outline: none;
+    // color: transparent;
+  }
+  &::-ms-expand {
+    display: none;
+  }
+
+  &.is-invalid {
+    color: $danger;
+  }
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+    min-width: none;
+  }
+}

@@ -4,6 +4,7 @@ base theme: amptheme
 description: AMP version of Vactory theme.
 package: Custom
 core: 8.x
+core_version_requirement: ^8 || ^9
 regions:
   header: Header
   content: Content

@@ -19,13 +19,12 @@
  */
 #}
 
-{% set first_name = content.field_first_name[0]['#context'].value %}
-{% set last_name = content.field_last_name[0]['#context'].value %}
+{% set first_name = user.field_first_name.0.value %}
+{% set last_name = user.field_last_name.0.value %}
 {% set full_name = [first_name ~ ' ', last_name|capitalize]|join %}
 {% set user_date = user.createdtime | date("d/m/Y") %}
-{% set about = content.field_about_the_author[0]['#text'] %}
-
-{% include '@vactory/user/user-navigation.html.twig' with {
+{% set about = user.field_about_the_author.value %}
+{% include '@vactory_theme/user/user-navigation.html.twig' with {
 'user': user,
 } %}
 
@@ -36,8 +35,11 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-4 text-center">
-                            {% if content.user_picture[0]['#item'].target_id is not empty %}
-                                {{ addAttributes(content.user_picture, {'class': ['rounded-circle', 'avatar']}) }}
+                            {% if user.user_picture.target_id is not empty %}
+                                {% set image_uri = file_object(user.user_picture.target_id).uri.value %}
+                                {% set image_url = file_url(image_uri) %}
+                                <img src="{{ image_url }}"
+                                     class="rounded-circle avatar"/>
                             {% else %}
                                 <img src="{{ base_path ~ directory }}/assets/img/user-avatar.svg"
                                      class="rounded-circle avatar"/>
@@ -66,7 +68,7 @@
                             <div class="col-md-12">
                                 <hr>
                                 <blockquote class="blockquote mr-auto ml-auto text-center">
-                                    <p class="mb-0">{{ about }}</p>
+                                    <p class="mb-0">{{ about|raw }}</p>
                                     <footer class="blockquote-footer">{{ full_name }}</footer>
                                 </blockquote>
                             </div>

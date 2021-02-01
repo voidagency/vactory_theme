@@ -1,16 +1,14 @@
 
 @mixin bg-filter() {
     @for $i from 1 through 10 {
-        .bg-filter-#{$i*10} ,
-        [class*="bg-custom--"].bg-custom-filter-#{$i*10}{
+        .bg-filter-#{$i*10} {
             &::before {
                 opacity: ($i/10);
             }
         } 
         
     }
-    [class*="bg-filter-"] ,
-    [class*="bg-custom-filter-"][class*="bg-custom--"]  {
+    [class*="bg-filter-"] {
         position: relative;
         &::before {
             content: "";

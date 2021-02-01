@@ -27,19 +27,19 @@
         }
       });
 
-      $('select.selectpicker:not([multiple="multiple"]), select.skinned-select').each(function (index, value) {
+      /*$('select.selectpicker:not([multiple="multiple"]), select.skinned-select').each(function (index, value) {
         ($(value).is(':visible') && $(value).hasClass('js-autocomplete')) ? $(value).attr('data-live-search', true).attr('data-none-results-text', Drupal.t('Aucun résultat')) : null;
         ($(value).is(':visible')) ? $(value).selectpicker() : null;
-      });
+      });*/
 
       $('select:not(.skinned-select):not(.selectpicker):not(.lang-dropdown-select-element)').each(function () {
         if ($(this).attr('data-placeholder-value')) {
           $(this).find('option[value="none"]').text($(this).attr('data-placeholder-value'));
         }
-        $(this).parent().addClass('group-select');
+        /*$(this).parent().addClass('group-select');
         if (!($(this).siblings().is("span"))) {
           $(this).parent().append("<span class='selected-option'> " + $(this).find("option:selected").text() + "</span>");
-        }
+        }*/
       });
       $('select:not(.skinned-select):not(.selectpicker):not(.lang-dropdown-select-element)').change(function () {
         var str = $(this).find("option:selected").text();

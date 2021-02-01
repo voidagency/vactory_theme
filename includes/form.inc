@@ -82,6 +82,15 @@ function vactory_theme_preprocess_form_element(&$variables) {
       unset($variables['description']);
     }
   }
+  // Use to hide labels from the BEF views.
+  if (isset($variables['element']['#context'])) {
+    $plugin_type = $variables['element']['#context']['#plugin_type'];
+    if ($plugin_type == 'bef') {
+      if (isset($variables['label']['#title'])) {
+        $variables['label']['#title'] = '';
+      }
+    }
+  }
 
 }
 
@@ -95,7 +104,7 @@ function vactory_theme_preprocess_form_element_label(&$variables) {
 /**
  * Implements hook_theme_suggestions_HOOK().
  */
-function vactory_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+function vactory_theme_theme_suggestions_form_alter(array &$suggestions, array $variables) {
   $suggestions[] = 'form__' . $variables['element']['#form_id'];
 
   if (!empty($variables['element']['#theme'])) {

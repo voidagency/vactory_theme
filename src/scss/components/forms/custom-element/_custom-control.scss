@@ -1,0 +1,312 @@
+// Forms
+// -----------------------------------------------------------------------------
+$blueish-grey: #5A6169 !default;
+$input-font-size: .95rem !default;
+$input-hover-border-color: darken($input-border-color, 15) !default;
+
+$custom-control-indicator-border: 1px solid $border-color !default;
+$custom-checkbox-indicator-transition: transform $transition-duration $ease-in-out-circ, border $transition-duration $ease-in-out-circ !default;
+$custom-control-description-disabled-color: $gray-600 !default;
+
+
+// Custom form controls
+// Checkboxes and radios
+.custom-control,
+.skinned-control.checkbox,
+.skinned-control .checkbox,
+.skinned-control .radio {
+  min-height: (1rem * $line-height-base);
+  padding-left: $custom-control-gutter;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .custom-control-label:before,
+  label::before {
+    pointer-events: all;
+  }
+  @include rtl() {
+    padding-right: $custom-control-gutter;
+    padding-left: 0;
+  }
+}
+
+.custom-control-inline {
+  margin-right: $custom-control-spacer-x;
+  @include rtl() {
+    margin-left: $custom-control-spacer-x;
+    margin-right: 0;
+  }
+}
+
+.custom-control-input,
+.skinned-control input[type="radio"],
+.skinned-control input[type="checkbox"] {
+  position: absolute;
+  z-index: 0; // Put the input behind the label so it doesn't overlay text
+  opacity: 0;
+  margin: 0;
+  left: 0;
+  width: $custom-control-indicator-size;
+  height: $custom-control-indicator-size;
+
+  @include rtl() {
+    left: auto;
+    right: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:checked ~ .custom-control-label::before,
+  &:checked ~ label::before {
+    color: $custom-control-indicator-checked-color;
+    border-color: transparent;
+    @include gradient-bg($custom-control-indicator-checked-bg);
+    @include box-shadow($custom-control-indicator-checked-box-shadow);
+  }
+
+  &:focus ~ .custom-control-label::before,
+  &:focus ~ label::before {
+    // the mixin is not used here to make sure there is feedback
+    box-shadow: $custom-control-indicator-focus-box-shadow;
+  }
+
+  &:active ~ .custom-control-label::before,
+  &:active ~ label::before {
+    color: $custom-control-indicator-active-color;
+    background-color: $custom-control-indicator-active-bg;
+    @include box-shadow($custom-control-indicator-active-box-shadow);
+  }
+
+  &:disabled {
+    ~ .custom-control-label,
+    ~ label {
+      color: $custom-control-description-disabled-color; // $custom-control-label-disabled-color
+
+      &:hover {
+        cursor: not-allowed;
+      }
+
+      &::before {
+        background-color: $custom-control-indicator-disabled-bg;
+      }
+    }
+
+  }
+}
+
+// Custom control indicators
+//
+// Build the custom controls out of psuedo-elements.
+
+.custom-control-label,
+.skinned-control.checkbox label,
+.skinned-control .checkbox label,
+.skinned-control .radio label {
+  position: static;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  // Background-color and (when enabled) gradient
+  &::before {
+    position: absolute;
+    display: block;
+    pointer-events: none;
+    content: "";
+    user-select: none;
+    top: (($line-height-base - $custom-control-indicator-size) / 2);
+    left: 0;
+    width: $custom-control-indicator-size;
+    height: $custom-control-indicator-size;
+    background-color: $custom-control-indicator-bg;
+    border: $custom-control-indicator-border;
+    transition: all 250ms cubic-bezier(.27, .01, .38, 1.06);
+    @include box-shadow($custom-control-indicator-box-shadow);
+  }
+
+  // Foreground (icon)
+  &::after {
+    position: absolute;
+    content: "";
+    display: block;
+    top: (($line-height-base - $custom-control-indicator-size) / 2);
+    left: -$custom-control-gutter;
+    width: $custom-control-indicator-size;
+    height: $custom-control-indicator-size;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: $custom-control-indicator-bg-size;
+  }
+
+  @include rtl() {
+    &::before {
+      right: 0;
+      left: auto;
+    }
+    &::after {
+      right: -$custom-control-gutter;
+      left: auto;
+    }
+  }
+}
+
+
+// Checkboxes
+//
+// Tweak just a few things for checkboxes.
+
+.custom-checkbox,
+.skinned-control.checkbox,
+.skinned-control .checkbox {
+  .custom-control-label::before,
+  label::before {
+    @include border-radius($custom-checkbox-indicator-border-radius);
+  }
+
+  .custom-control-label::after,
+  label::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 7px;
+    width: 5px;
+    height: 11px;
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+    border-right: 2px solid $white;
+    border-bottom: 2px solid $white;
+    transition: $custom-checkbox-indicator-transition;
+    transition-delay: 100ms;
+
+    @include rtl() {
+      left: auto;
+      right: 7px;
+    }
+  }
+
+  .custom-control-input:checked ~ .custom-control-label,
+  input[type='checkbox']:checked ~ label {
+    &::before {
+      background-image: none;
+    }
+
+    &::after {
+      opacity: 1;
+      transform: rotate(45deg) scale(1);
+      background-image: $custom-checkbox-indicator-icon-checked;
+    }
+  }
+
+  .custom-control-input:indeterminate ~ .custom-control-label,
+  input[type='checkbox']:indeterminate ~ label {
+    &::before {
+      border: none;
+      @include gradient-bg($custom-checkbox-indicator-indeterminate-bg);
+      @include box-shadow($custom-checkbox-indicator-indeterminate-box-shadow);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      transform: scale(1);
+      background-image: $custom-checkbox-indicator-icon-indeterminate;
+      background-color: $white;
+      border: none;
+      width: 10px;
+      height: 2px;
+      top: 11px;
+      left: 4px;
+      opacity: 1;
+      transition: none;
+
+      @include rtl() {
+        left: auto;
+        right: 4px;
+      }
+    }
+  }
+
+  .custom-control-input:disabled:checked ~ .custom-control-label,
+  input[type='checkbox']:disabled:checked ~ label {
+    &::before {
+      background: $custom-control-indicator-disabled-bg;
+      border-color: $border-color;
+    }
+
+    &::after {
+      border-color: $border-color;
+    }
+  }
+}
+
+// Radios
+//
+// Tweak just a few things for radios.
+
+.custom-radio,
+.skinned-control .radio {
+  .custom-control-label::before,
+  label::before {
+    border-radius: $custom-radio-indicator-border-radius;
+  }
+
+  .custom-control-label::after,
+  label::after {
+    content: '';
+    border-radius: 50%;
+    transform: scale(0);
+    background-image: none !important;
+    position: absolute;
+    background: #fff;
+    width: 8px;
+    height: 8px;
+    top: 8px;
+    left: 5px;
+    transition: all 250ms cubic-bezier(.27, .01, .38, 1.06);
+    transition-delay: .1s;
+    opacity: 0;
+    transform: scale(0);
+
+    @include rtl() {
+      left: auto;
+      right: 5px;
+    }
+  }
+
+  .custom-control-input:checked ~ .custom-control-label,
+  input[type='radio']:checked ~ label {
+    &::before {
+      @include gradient-bg($custom-control-indicator-checked-bg);
+    }
+
+    &::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .custom-control-input:disabled,
+  input[type='radio']:disabled {
+    &:checked ~ .custom-control-label::before,
+    &:checked ~ label::before {
+      background-color: lighten($blueish-grey, 30%);
+    }
+  }
+
+  .custom-control-input:disabled:checked ~ .custom-control-label,
+  input[type='radio']:disabled:checked ~ label {
+    &::before {
+      background: $custom-control-indicator-disabled-bg;
+      border-color: $border-color;
+    }
+
+    &::after {
+      background: $border-color;
+    }
+  }
+}

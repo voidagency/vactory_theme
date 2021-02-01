@@ -1,0 +1,44 @@
+/**
+ * Hamburger Button
+ */
+ .hamburger {
+    &:not(.is-active) {
+        .hamburger-box {
+          &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: -5px;
+            width: $hamburger-layer-width;
+            height: $hamburger-layer-height;
+            background-color: $hamburger-layer-color;
+            border-radius: $hamburger-layer-border-radius;
+          }
+        }
+        .hamburger-inner {
+          width: 14px;
+        }
+    }
+    &.is-active {
+        .hamburger-inner { 
+            height: 0;
+            &::after ,
+            &::before {
+                top: 0;
+            }
+            &::after {
+                transform: rotate(45deg);
+            }
+            &::before {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
+
+button.hamburger{
+    &:focus {
+        outline: 0;
+    }
+}
+  

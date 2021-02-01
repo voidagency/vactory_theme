@@ -1,0 +1,62 @@
+
+
+.parallax-bg,
+.has-background--image.paragraph_parallax {
+  background-attachment: fixed;
+}
+
+
+[class*="has-background--"] {
+  & + .paragraph {
+    padding-top: $paragraph-sm;
+  }
+}
+
+.paragraph:not(.paragraph--type--vactory-paragraph-tab,.vp_anchor) {
+  padding-bottom: $paragraph-sm;
+}
+
+[class*="has-background--"] .paragraph:not(.paragraph--type--vactory-paragraph-tab) {
+  padding-top: $paragraph-sm;
+}
+
+
+@include media-breakpoint-up(lg) {
+  [class*="has-background--"] {
+    & + .paragraph {
+      padding-top: $paragraph-lg;
+    }
+  }
+
+  .paragraph:not(.paragraph--type--vactory-paragraph-tab,.vp_anchor) {
+    padding-bottom: $paragraph-lg;
+  }
+  [class*="has-background--"] .paragraph:not(.paragraph--type--vactory-paragraph-tab) {
+    padding-top: $paragraph-lg;
+  }
+}
+
+
+
+.vactory-page--has-background,
+.has-background--image {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &.bg-size-contain {
+    background-size: contain;
+  }
+  &.bg-align-right {
+    background-position-x: right;
+  }
+  &.bg-align-left {
+    background-position-x: left;
+  }
+  &.bg-align-top {
+    background-position-y: top;
+  }
+  &.bg-align-bottom {
+    background-position-y: bottom;
+  }
+}

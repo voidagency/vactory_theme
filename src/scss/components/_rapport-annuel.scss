@@ -1,0 +1,467 @@
+$rapport-height-desktop: 340px;
+$rapport-height-mobile: 220px;
+$rapport-height-desktop-2h: 700px;
+$rapport-height-mobile-2h: 400px;
+body.path--rapport-digital {
+  background-color: #f8f9fb;
+}
+
+.t-rapport--listing-filtres--wrapper {
+  h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    line-height: 22px;
+    color: $black;
+  }
+
+  .t-rapport--listing-filtres {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+
+    li {
+      margin: 10px 10px 0 0;
+    }
+
+    a {
+      padding: 5px 10px;
+      border-radius: 3px;
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 20px;
+      background-color: $white;
+      color: #908e8f;
+      border: 1px solid #d5d5d5;
+      text-decoration: none;
+
+      &:hover {
+        border-color: $primary;
+        color: $primary;
+      }
+    }
+  }
+}
+
+
+.t-rapport {
+  overflow: visible;
+  min-height: $rapport-height-mobile;
+  width: 100%;
+  padding: 0;
+  position: absolute;
+  border: 10px solid transparent;
+
+  .t-rapport--parent {
+    min-height: $rapport-height-mobile;
+    padding: 20px 22px 30px;
+    border: 8px solid;
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-position: right -40px bottom;
+    background-size: 230px 230px;
+    box-shadow: 0 0 11px 0 rgba(0, 0, 0, .11);
+    background-color: $white;
+
+    > *:not(.t-rapport--bg) {
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  &.ar-w2 {
+    width: 100%;
+  }
+
+  &.ar-w1-3 {
+    width: 100%;
+  }
+
+  &.ar-w2-3 {
+    width: 100%;
+  }
+
+  &.ar-w3-4 {
+    width: 100%;
+  }
+
+  &.ar-w4 {
+    width: 100%;
+  }
+
+  &.has-bg {
+    .t-rapport--header {
+      &-filtres {
+        a {
+          color: $white;
+          border-color: $white;
+        }
+      }
+    }
+
+    .t-rapport--content {
+      h3 {
+        color: $white;
+      }
+
+      p {
+        color: $white;
+      }
+    }
+
+    .t-rapport--link {
+      .permalink {
+        color: $white;
+
+        &:after {
+          background-color: $white;
+        }
+      }
+    }
+  }
+
+  &.t-rapport--chiffre {
+    .t-rapport--parent {
+      border: none;
+      text-align: center;
+
+      &.has-corner {
+        &:before {
+          content: " ";
+          display: block;
+          width: 95px;
+          height: 95px;
+          position: absolute;
+          right: -22px;
+          bottom: -25px;
+          background-color: transparent;
+          background-image: url(/themes/vactory_theme/assets/img/corner-right.png);
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          z-index: 11;
+          @include rtl() {
+            transform: rotate(-90deg);
+          }
+        }
+      }
+
+      .t-rapport--content {
+        align-items: center;
+
+        img {
+          width: 80px;
+          margin: 0 auto;
+        }
+
+        .t-chiffre {
+          color: $white;
+          -webkit-text-stroke: 1px $primary;
+          font-size: 50px;
+          line-height: 58px;
+        }
+      }
+    }
+  }
+
+  .t-rapport--bg {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: right -40px bottom;
+    background-size: 230px 230px;
+
+  }
+
+  .t-rapport--header {
+    margin-bottom: 15px;
+
+    &-filtres {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      a {
+        padding: 5px 10px;
+        border: 1px solid;
+        border-radius: 3px;
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 20px;
+        //color: $black;
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .t-rapport--content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: inherit;
+    margin-top: auto;
+    margin-bottom: auto;
+    //
+    h3 {
+      font-family: "FuturaTBold", sans-serif;
+      font-size: 24px;
+      line-height: 24px;
+      margin: 0 0 10px;
+      color: inherit;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 18px;
+      color: $black;
+
+      &.rapport-quote {
+        padding: 0;
+        //font-family: "FuturaTBook", sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 20px;
+        text-align: center;
+        margin: 0 auto;
+        &:before, &:after {
+          content: $icon-quote-right;
+          font-size: 18px;
+          line-height: 20px;
+          font-family: "vactory";
+          color: rgb(202, 10, 11);;
+          display: block;
+        }
+        &.left {
+          @include media-breakpoint-up(lg) {
+            position: absolute;
+            top: 0;
+            left: 180px;
+            transform: translateY(-50%);
+          }
+        }
+        &.top {
+          @include media-breakpoint-up(lg) {
+            position: absolute;
+            top: 0;
+            left: auto;
+            right: auto;
+            transform: translateY(-100%);
+          }
+        }
+
+        @include media-breakpoint-up(sm) {
+          font-size: 30px;
+          line-height: 20px;
+        }
+        @include media-breakpoint-up(md) {
+          font-size: 30px;
+          line-height: 20px;
+        }
+        @include media-breakpoint-up(lg) {
+          font-size: 39px;
+          line-height: 35px;
+        }
+      }
+    }
+  }
+
+  .t-rapport--link {
+    margin-top: 15px;
+
+    .permalink {
+      color: $black;
+
+      &:after {
+        background-color: $black;
+      }
+    }
+  }
+}
+
+
+@include media-breakpoint-up(md) {
+  .t-rapport {
+    min-height: $rapport-height-desktop;
+
+    &.t-rapport-2h {
+      min-height: $rapport-height-desktop-2h;
+    }
+
+    &.ar-w2 {
+      width: 50%;
+    }
+
+    &.ar-w1-3 {
+      width: 50%
+    }
+
+    &.ar-w2-3 {
+      width: 50%;
+    }
+
+    &.ar-w3-4 {
+      width: 75%;
+    }
+
+    &.ar-w4 {
+      width: 100%;
+    }
+
+    .t-rapport--parent {
+      min-height: $rapport-height-desktop;
+      background-position: right bottom -1px;
+      background-size: contain;
+
+      &.t-rapport-2h {
+        min-height: $rapport-height-desktop-2h;
+      }
+    }
+
+    .t-rapport--bg {
+      background-position: right bottom -1px;
+      background-size: contain;
+    }
+
+    &.t-rapport--chiffre {
+      .t-rapport--parent {
+        .t-rapport--content {
+          img {
+            width: 80px;
+            margin: 0 auto;
+          }
+
+          .t-chiffre {
+            color: $white;
+            -webkit-text-stroke: 1px $primary;
+            font-size: 80px;
+            line-height: 88px;
+          }
+        }
+      }
+    }
+
+    .t-rapport--header {
+
+      &-filtres {
+
+        a {
+
+        }
+      }
+    }
+
+    .t-rapport--content {
+      h3 {
+        font-size: 28px;
+        line-height: 31px;
+      }
+
+      p {
+        font-size: 20px;
+        line-height: 29px;
+      }
+    }
+  }
+}
+
+
+@include media-breakpoint-up(lg) {
+  .t-rapport {
+    &.ar-w2 {
+      width: 50%;
+    }
+
+    &.ar-w1-3 {
+      width: calc(33.3333% - 1px);
+    }
+
+    &.ar-w2-3 {
+      width: calc(66.6666% - 1px);
+    }
+
+    &.ar-w3-4 {
+      width: 75%;
+    }
+
+    &.ar-w4 {
+      width: 100%;
+    }
+
+    .t-rapport--header {
+
+      &-filtres {
+
+        a {
+
+        }
+      }
+    }
+
+    .t-rapport--content {
+      h3 {
+
+
+      }
+    }
+  }
+}
+
+/*
+.rapport-quote {
+  margin: 0;
+  padding: 0;
+  font-family: "FuturaTBook", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 20px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+
+  &:before {
+    font-size: 18px;
+    content: $icon-quote-left;
+    font-family: "vactory";
+    color: $primary;
+    display: block;
+  }
+
+  &:after {
+    font-size: 18px;
+    content: $icon-quote-left;
+    font-family: "vactory";
+    color: $primary;
+    display: block;
+  }
+
+  @include media-breakpoint-up(sm) {
+    font-size: 30px;
+    line-height: 20px;
+  }
+  @include media-breakpoint-up(md) {
+    font-size: 30px;
+    line-height: 20px;
+  }
+  @include media-breakpoint-up(lg) {
+    font-size: 39px;
+    line-height: 27px;
+  }
+
+}
+
+
+ */

@@ -13,12 +13,20 @@ $banner-modern-border: $primary !default;
 $banner-title-font-size: 20px;
 $banner-text-color: $white;
 $banner-text-font-family: $font-family-base;
+$banner-mb-sm: 25px;
+$banner-mb-lg: 50px;
 .vf-banner {
   position: relative;
-  min-height: 155px;
+  min-height: 250px;
   justify-content: center;
   display: flex;
   flex-direction: column;
+  &:not(.no-padding) {
+    margin-bottom: $banner-mb-sm;
+    @include media-breakpoint-up(lg) {
+      margin-bottom: $banner-mb-lg;
+    }
+  }
 
   &__title {
     h1 {

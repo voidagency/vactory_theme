@@ -40,23 +40,28 @@ node_body_class ? node_body_class,
 {% elseif html_attributes['dir'] == 'rtl' %}
   {{ attach_library('vactory_theme/style_rtl') }}
 {% endif %}
-
 <!DOCTYPE html>
 <html{{ html_attributes }}>
-<head>
-  <head-placeholder token="{{ placeholder_token|raw }}">
+  <head>
+    <head-placeholder token="{{ placeholder_token|raw }}">
     <title>{{ head_title|safe_join(' | ') }}</title>
     <css-placeholder token="{{ placeholder_token|raw }}">
-      <js-placeholder token="{{ placeholder_token|raw }}">
-        <style>body{visibility: hidden}</style>
-        </head>
-<body{{ attributes.addClass(body_classes) }}>
-<a href="#main-content" class="visually-hidden focusable">
-  {{ 'Skip to main content'|t }}
-</a>
-{{ page_top }}
-{{ page }}
-{{ page_bottom }}
-<js-bottom-placeholder token="{{ placeholder_token|raw }}">
-</body>
+    <js-placeholder token="{{ placeholder_token|raw }}">
+    <style>body{visibility: hidden}</style>
+  </head>
+  <body{{ attributes.addClass(body_classes) }} {% if node_bg_image is defined %} style="background-image: url('{{ node_bg_image ? node_bg_image }}')" {% endif %} >
+    <a href="#main-content" class="visually-hidden focusable">
+      {{ 'Skip to main content'|t }}
+    </a>
+    {% if is_loading_layer_enabled %}
+    {{ attach_library('vactory_loading_layer/loading_layer_libs') }}
+    <div id="load-layer" class="load-layer">
+      <img class="load-layer__logo img-fluid" src="{{ base_path ~ directory }}/logo.png">
+    </div>
+    {% endif %}
+    {{ page_top }}
+    {{ page }}
+    {{ page_bottom }}
+    <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+  </body>
 </html>

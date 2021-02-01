@@ -40,10 +40,12 @@ set nav_classes = [
   <ul class="dropdown-menu">
     {% endif %}
     {% for item in items %}
+      {% set wrapper_class = item.url.options.attributes.wrapper_class %}
       {%
         set item_classes = [
           item.in_active_trail ? 'active',
-          item.is_expanded ? 'expanded dropdown'
+          item.is_expanded ? 'expanded dropdown',
+          wrapper_class
         ]
       %}
       <li{{ item.attributes.addClass(item_classes) }}>

@@ -1,6 +1,36 @@
 .social-media-links--platforms {
   margin: 0;
-
+  .fa {
+    &:before {
+      content: $icon-picture;
+      font-family: "vactory";
+    }
+  }
+  .fa-facebook {
+    &:before {
+      content: $icon-facebook;
+    }
+  }
+  .fa-youtube {
+    &:before {
+      content: $icon-youtube;
+    }
+  }
+  .fa-linkedin {
+    &:before {
+      content: $icon-linkedin;
+    }
+  }
+  .fa-twitter {
+    &:before {
+      content: $icon-twitter;
+    }
+  }
+  .fa-instagram {
+    &:before {
+      content: $icon-instagram;
+    }
+  }
   li span.fa {
     @include rem(font-size, 20px);
     color: $gray-900;

@@ -1,0 +1,58 @@
+{#
+/**
+ * @file
+ * Article Component.
+ * themes/interface/src/scss/stylesheets/components/article/_article.scss
+ */
+#}
+{% if classes is not defined %}
+  {% set classes = [] %}
+{% endif %}
+{% set classes = classes|merge(['card','card--inline', 'mb-4']) %}
+
+<article {{ attributes.addClass(classes) }}>
+  <div class="card-col position-relative card-image--inline">
+    {% if image.0 is defined %}
+      {{ image }}
+    {% else %}
+      <img class=" lazyloaded" src="{{ base_path ~ directory }}/assets/img/smart-search-default.png" typeof="foaf:Image" alt="browsers" title="{{ 'Default content image'|t }}">
+    {% endif %}
+    {% block image_after %}{% endblock %}
+  </div>
+  <div class="card-col position-relative card-body--inline">
+    <div class="card-body">
+      {% if subtitle or date_string %}
+        <h6 class="card-subtitle mb-2">
+          {% block date_string %}
+            {% if date_string %}
+              <span class="text-gray">{{ date_string|capitalize }}</span>
+            {% endif %}
+          {% endblock %}
+          {% block subtitle %}
+            {% if subtitle %}
+              <span class="badge badge-primary ml-2">{{ subtitle }}</span>
+            {% endif %}
+          {% endblock %}
+        </h6>
+      {% endif %}
+      {{ contextual_links }}
+      {{ title_prefix }}
+      <h4{{ title_attributes }} class="card-title">
+        {% if  url is null %}
+          <span class="link font-semibold text-uppercase font-20">{{ title }}</span>
+        {% else %}
+          <a href="{{ url }}" rel="bookmark" class="link font-semibold text-uppercase font-20">{{ title }}</a>
+        {% endif %}
+      </h4>
+      {{ title_suffix }}
+      <div class="card-text">
+        {% if intro %}
+          <p>{{ noWrapper(intro) }}</p>
+        {% else %}
+          <p>{{ summary }}</p>
+        {% endif %}
+      </div>
+      {% block intro_after %}{% endblock %}
+    </div>
+  </div>
+</article>

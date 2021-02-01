@@ -14,7 +14,10 @@
           nonSelectedText: Drupal.t('Selectionner...')
         });
       });
-
+       /**
+       * Filtre multiselect sur le coté sur mobile
+       * $('.btn.multiselect').removeClass('btn-default').parent('.btn-group').addClass('filter-slider'); 
+       **/
       $('.btn.multiselect').removeClass('btn-default');
 
     });

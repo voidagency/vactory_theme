@@ -30,11 +30,6 @@ $views-exposed-form-m-border: #e1e1e1 !default;
 
 .views-exposed-form .btn-reset {
   @include rem(margin-left, 5px);
-
-  @include rtl() {
-    margin-left: 0;
-    @include rem(margin-right, 5px);
-  }
 }
 
 .views-exposed-form .form-row {

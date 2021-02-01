@@ -40,6 +40,25 @@ $media-colors: map-merge((
 // -----------------------------------------------------------------------------
 $icomoon-font-path: "../fonts/icons-font/vactory-icons-font/fonts" !default;
 
+// Overiddes Default variables for the Hamburger Menu
+// ==================================================
+$hamburger-padding-x: 5px;
+$hamburger-padding-y: 4px;
+$hamburger-layer-width: 24px;
+$hamburger-layer-height: 1px;
+$hamburger-layer-spacing: 4px;
+$hamburger-layer-color: $black;
+$hamburger-layer-border-radius: 5px;
+$hamburger-hover-opacity: .7;
+$hamburger-active-layer-color: $hamburger-layer-color;
+$hamburger-active-hover-opacity: $hamburger-hover-opacity;
+
+// To use CSS filters as the hover effect instead of opacity,
+// set $hamburger-hover-use-filter as true and
+// change the value of $hamburger-hover-filter accordingly.
+$hamburger-hover-use-filter: false;
+$hamburger-hover-filter: opacity(50%);
+$hamburger-active-hover-filter: $hamburger-hover-filter;
 
 // Transition
 // -----------------------------------------------------------------------------
@@ -49,3 +68,11 @@ $ease-in-out-circ: cubic-bezier(.27, .01, .38, 1.06);
 
 // Background color filter 
 $bg-filter-color: $black;
+
+// Paragraph Padding 
+$paragraph-lg: 100px;
+$paragraph-sm: 64px;
+
+// Splashsreen Padding
+$splash-lg: 50px;
+$splash-sm: 20px;

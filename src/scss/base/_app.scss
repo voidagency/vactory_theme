@@ -22,23 +22,7 @@
 
 html {
   position: relative;
-  background: $white;
-
-  body {
-    height: 100%;
-    overflow-x: hidden;
-
-    .mdi:before,
-    .mdi-set {
-      line-height: initial;
-    }
-  }
-  main{
-    overflow-x: hidden;
-  }
-  &.screen-disable__scroll body {
-    overflow: hidden;
-  }
+  background: $body-bg;
 
   &.js body.no-scroll {
     overflow: hidden;
@@ -48,10 +32,49 @@ html {
     left: 0;
     right: 0;
   }
-}
 
-body {
-  @include rtl() {
-    text-align: right;
+  &.screen-disable__scroll {
+    &,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
+  }
+
+  body {
+    height: 100%;
+    background-color: $body-bg;
+    color: $body-color;
+    visibility: visible;
+    overflow-y: visible;
+    overflow-x: hidden;
+    /*rtl:raw:
+    direction: rtl;
+    */
+
+    &.overflow-y {
+      overflow-y: hidden;
+    }
+
+    .mdi:before,
+    .mdi-set {
+      line-height: initial;
+    }
+
+    &.cke_editable {
+      padding: 0 !important;
+      background-color: transparent !important;
+
+      .d-none,
+      .d-md-none,
+      .d-lg-none {
+        display: block !important;
+      }
+    }
+  }
+
+  main{
+    overflow-x: hidden;
+    width: 100%;
   }
 }

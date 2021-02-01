@@ -1,0 +1,29 @@
+.bootstrap-select {
+  &:not([class*="col-"], [class*="form-control"], .input-group-btn) {
+    width: 100%;
+  }
+
+  &.form-control {
+    border: $input-border-width solid $input-border-color;
+
+  }
+
+  > .dropdown-menu {
+    @include rem(margin-top, 6px);
+  }
+
+  ul.dropdown-menu {
+    li {
+      &:hover {
+        background-color: $gray-600;
+      }
+
+      a {
+        display: block;
+        @include rem(padding, 4px 10px);
+        color: $black;
+      }
+    }
+  }
+
+}

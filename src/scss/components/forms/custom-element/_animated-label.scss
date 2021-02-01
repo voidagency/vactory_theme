@@ -1,0 +1,76 @@
+// form with animated label
+//
+.animated-label {
+  position: relative;
+  margin-top: 20px;
+
+  input,
+  textarea {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+
+    &::placeholder {
+      opacity: 0;
+    }
+
+    & ~ label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      transform-origin: bottom left;
+      pointer-events: none;
+      transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      @include rtl() {
+        left: auto;
+        right: 10px;
+      }
+    }
+
+    // input focus state
+    &:focus {
+      border-color: $input-border-color;
+      box-shadow: none;
+    }
+  }
+
+  input:focus ~ label,
+  textarea:focus ~ label,
+  label.animated {
+    transform: scale(.75) translateY(-50px);
+    color: $primary;
+  }
+
+  // label style with form validation
+  input,
+  textarea {
+    &.is-invalid {
+      box-shadow: none;
+      color: $red;
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      & ~ label {
+        color: $red;
+      }
+    }
+
+    &.is-valid {
+      box-shadow: none;
+      color: $green;
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      & ~ label {
+        color: $green;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,60 @@
+// form validation state
+// is-invalid
+.form-control {
+  &.is-invalid ~ .is-invalid {
+    @extend .invalid-feedback;
+    // display: block;
+  }
+
+  &.is-valid ~ .is-valid {
+    @extend .valid-feedback;
+
+  }
+}
+
+.messages.messages--error.file-upload-js-error {
+  color: $red;
+  margin-bottom: 10px;
+}
+//checkbox validation style
+.form-check-input {
+  &.is-invalid {
+    ~ label {
+      color: $red;
+    }
+  }
+
+  &.is-valid {
+    ~ label {
+      color: $green;
+    }
+  }
+}
+
+// skinned bootstrap select validation style
+.bootstrap-select {
+  .dropdown-toggle {
+    &.is-invalid {
+      color: $red;
+      border-color: $red;
+    }
+
+    &.is-valid {
+      color: $green;
+      border-color: $green;
+    }
+  }
+}
+
+// select validation style {
+.select-wrapper {
+  &.is-invalid {
+    color: $red;
+    border-color: $red;
+  }
+
+  &.is-valid {
+    color: $green;
+    border-color: $green;
+  }
+}

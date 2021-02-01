@@ -1,17 +1,19 @@
 {
   "name": "vactory",
   "description": "Responsive base theme for Drupal.",
-  "proxy" : "http://vactory8.local",
+  "proxy": "http://vactory8.dd:8083",
   "css": {
-    "file" : "src/scss/vactory.style.scss",
+    "file": "src/scss/*.scss",
     "src": [
       "src/scss/**/*.scss"
     ],
     "custom_module": [
-      "../../modules/custom/**/scss/*.scss"
+      "../../../modules/custom/**/scss/*.scss",
+      "../../../modules/custom/vactory_dynamic_field/widgets/**/*.scss"
     ],
     "vactory_module": [
-      "../../modules/vactory/**/scss/*.scss"
+      "../../../profiles/contrib/vactory/modules/**/scss/*.scss",
+      "../../../profiles/contrib/vactory/modules/**/widgets/**/*.scss"
     ],
     "dest": "assets/css",
     "includePaths": [
@@ -19,7 +21,7 @@
     ]
   },
   "ckeditor": {
-    "file" : "src/scss/ckeditor.style.scss",
+    "file": "src/scss/ckeditor.style.scss",
     "src": [
       "src/scss/**/*.scss"
     ],
@@ -28,21 +30,37 @@
       "./node_modules/"
     ]
   },
+  "csscomb": {
+    "src": [
+      "assets/css/*.css"
+    ],
+    "dest": "assets/css"
+  },
   "js": {
     "file": "vactory.script.js",
     "src": [
       "src/js/_variables.js",
       "src/js/utilities/*.js",
-      "src/js//behaviors/*.js",
-      "src/js//theme/*.js",
+      "src/js/behaviors/*.js",
+      "src/js/theme/*.js",
       "src/js/_init.js"
     ],
     "dest": "assets/js"
   },
   "images": {
     "src": [
-      "assets/images/**/*"
+      "src/img/*.+(png|jpg|gif|svg)"
     ],
-    "dest": "assets/images/"
+    "dest": "assets/img/"
+  },
+  "styleguide": {
+    "src": [
+      "src/styleguide/styleguide.twig",
+      "src/styleguide/**/*.twig"
+    ],
+    "dest": "assets/styleguide",
+    "srcWatch": [
+      "src/styleguide/**/*.twig"
+    ]
   }
 }

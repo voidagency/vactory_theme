@@ -5,7 +5,7 @@ core: 8.x
 engine: twig
 type: theme
 base theme: stable
-
+core_version_requirement: ^8 || ^9
 libraries:
   - vactory_theme/style
 #  - factory/bootstrap
@@ -15,12 +15,14 @@ libraries:
 libraries-override:
   seven/global-styling: false
   core/modernizr: false
+  social_media_links/fontawesome.component: false
 
 
 regions:
   top: 'Top'
   header:  'Header'
   bridge: 'Bridge'
+  sidebar: 'Sidebar'
   content: Content
   footer: Footer
   bottom: Bottom

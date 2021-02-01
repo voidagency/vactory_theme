@@ -6,26 +6,19 @@
   var __isTop = false;
   jQuery.validator.setDefaults({
     debug: false,
-
     // change error class
     errorClass: "is-invalid",
-
     // change valid class
     validClass: "is-valid",
-
     // error element tag
-    errorElement: "div",
-
+    errorElement: "span",
     // comment this two fields to use bootstrap default markup for error
     wrapper: "li",
-
     // validation event
     onkeyup: false,
     onclick: false,
-
     // ignored elements when validating
     ignore: "",
-
     // personalised rules
     // add rules with the name of the input fields
     rules: {
@@ -45,9 +38,11 @@
       },
       phone: {
         tele: true
+      },
+      file: {
+        required: true,
       }
     },
-
     // personalised messages
     messages: {
       // required:Drupal.t("This field is required."),
@@ -74,7 +69,27 @@
       var phoneLabelIndex = "";
 
       $.each(this.errorList, function (key, value) {
-        if (value.element.name == 'phone' && value.method == 'emailOrPhone') {
+        //console.log('value', value);
+        if(value.method === "pattern") {
+          if($(value.element)[0].dataset.webformPatternError !== undefined && $(value.element)[0].dataset.webformPatternError !== '') {
+            value.message = Drupal.t($(value.element)[0].dataset.webformPatternError);
+          }
+          else {
+            var _name = $(value.element).parent('.form-group').find('label').text().replace('*', '');
+            value.message =  Drupal.t('Field') + ' ' + _name + ' ' + Drupal.t('is not valid');
+          }
+        }
+        if(value.method === "required") {
+          if (value.element.className.includes('form-type-hidden')) {
+            if (value.element.name.includes('file')) {
+              var _name_file = $(value.element).parents('.form-group.form-type-managed-file').find('label').text().replace('*', '');
+              console.log('name_file', _name_file);
+              value.message = value.message =  Drupal.t('Field') + ' ' + _name_file + ' ' + Drupal.t('is not valid');
+            }
+          }
+
+        }
+        if (value.element.name === 'phone' && value.method === 'emailOrPhone') {
           phoneLabelIndex = key;
         }
       });
@@ -96,18 +111,14 @@
         //_el.siblings('.selected-option').addClass('is-invalid');
         // _el.siblings('.btn-group').find('button').addClass('is-invalid');
         _el.siblings('.selected-option').parent().addClass('is-invalid');
-      }
-      else if (_el.is('input[type="radio"]')) {
+      } else if (_el.is('input[type="radio"]')) {
         _el.parents('.form-type-radios').addClass('is-invalid');
-      }
-      else if (_el.is('file')) {
+      } else if (_el.is('file')) {
         _el.parent().addClass('is-invalid');
         _el.parents('.form-managed-file').addClass('is-invalid');
-      }
-      else if (_el.is('input[type="hidden"]')) {
+      } else if (_el.is('input[type="hidden"]')) {
         _el.parents('.form-managed-file').addClass('is-invalid');
-      }
-      else {
+      } else {
         _el.addClass('is-invalid');
       }
     },
@@ -118,53 +129,47 @@
         //_el.siblings('.selected-option').removeClass('is-invalid');
         // _el.siblings('.btn-group').find('button').removeClass('is-invalid');
         _el.siblings('.selected-option').parent().removeClass('is-invalid');
-      }
-      else if (_el.is('input[type="radio"]')) {
+      } else if (_el.is('input[type="radio"]')) {
         _el.parents('.form-type-radios').removeClass('is-invalid');
-      }
-      else if (_el.is('input[type="file"]')) {
+      } else if (_el.is('input[type="file"]')) {
         _el.removeClass('is-invalid');
         _el.parents('.form-managed-file').removeClass('is-invalid');
-      }
-      else if (_el.is('input[type="hidden"]')) {
+      } else if (_el.is('input[type="hidden"]')) {
         _el.parents('.form-managed-file').removeClass('is-invalid');
-      }
-      else {
+      } else {
         _el.removeClass('is-invalid');
       }
     },
     // handler for invalid form
     invalidHandler: function (event, validator) {
+      //console.log('event : ', event, ' validator : ', validator);
       // 'this' refers to the form
       var errors = validator.numberOfInvalids();
       if (errors) {
         // comment if not using errors messages wrapper
         $(".validation-messages-box").show();
-      }
-      else {
+      } else {
         // comment if not using errors messages wrapper
         $(".validation-messages-box").hide();
       }
     },
-
     // handler for valid form
     submitHandler: function (form) {
       // do other things for a valid form
       form.submit();
     }
   });
-
   // add specific method
 
   jQuery.validator.addMethod('fullEmail', function (value, element) {
     return this.optional(element) || /\S+@\S+\.\S+/.test(value);
   }, Drupal.t("Please enter a valid email"));
 
-  jQuery.validator.addMethod('emailOrPhone', function (value, element) {
+  jQuery.validator.addMethod('emailOrPhone', function () {
     return $("#edit-email").val() !== "" || $("#edit-phone").val() !== "";
   }, Drupal.t("You must provide at least one contact field"));
 
-  jQuery.validator.addMethod('captcha_validation', function (value, element) {
+  jQuery.validator.addMethod('captcha_validation', function () {
     var googleResponse = jQuery('#g-recaptcha-response').val();
     return googleResponse.length > 0;
   }, Drupal.t("Veuillez valider le captcha"));
@@ -173,7 +178,7 @@
     return this.optional(element) || value.length >= 5;
   });
 
-  jQuery.validator.addMethod('search_key_validation', function (value, element) {
+  jQuery.validator.addMethod('search_key_validation', function (value) {
     return /^.*[\u0041-\u005A\u0061-\u007A\u00C0-\u00F6\u0600-\u06FF0-9]{3}.*$/.test(value);
   }, Drupal.t("Vous devez inclure au moins un mot-clé pour correspondre au contenu. Les mots-clés doivent contenir au moins 3 caractères, et la ponctuation est ignorée."));
 
@@ -195,21 +200,21 @@
 
   // add specific method - Letter & letter acented & Arabic caracters
   jQuery.validator.addMethod('alphab', function (value, element) {
-    return this.optional(element) || /^[\u0041-\u005A\u0061-\u007A\u00C0-\u00F6\u0600-\u06FF \-\s]+$/.test(value)
+    return this.optional(element) || /^[\u0041-\u005A\u0061-\u007A\u00C0-\u00F6\u0600-\u06FF \-\s]+$/.test(value);
     //return this.optional(element) || /^[\u0000-\u007F\u0600-\u06FF
     // \-_\s]+$/.test(value) return this.optional(element) ||
     // /^[\p{L}]+[\p{L}\s-]*$/.test(value)
   });
 
   jQuery.validator.addMethod('no_arabic', function (value, element) {
-    return this.optional(element) || /^[^\u0600-\u06FF]+$/.test(value)
+    return this.optional(element) || /^[^\u0600-\u06FF]+$/.test(value);
   });
 
   jQuery.validator.addMethod('tele', function (value, element) {
     return this.optional(element) || /[+]{0,1}[0-9]{1,4}[\s]{0,1}[0-9]{9,14}$/.test(value);
   }, Drupal.t("Veuillez saisir un numéro de téléphone valide"));
 
-  jQuery.validator.addMethod('emailOrPhone', function (value, element) {
+  jQuery.validator.addMethod('emailOrPhone', function () {
     return $("#edit-email").val() !== "" || $("#edit-mobile-phone").val() !== "";
   }, Drupal.t("Vous devez renseigner au moin un champ de contact"));
 
@@ -239,10 +244,10 @@
       // CIN Etranger avec tiret sans espace.
       /^(([a-zA-Z]{2})[-]([0-9]{1,6})([a-zA-Z]{1}))$/.test(value) ||
       // CIN Etranger sans tiret.
-      /^(([a-zA-Z]{1,2})([0-9]{1,6})([a-zA-Z]{1}))$/.test(value)
+      /^(([a-zA-Z]{1,2})([0-9]{1,6})([a-zA-Z]{1}))$/.test(value);
   }, Drupal.t("Format de la CIN incorrecte"));
 
-  jQuery.validator.addMethod('captcha_validation', function (value, element) {
+  jQuery.validator.addMethod('captcha_validation', function () {
     var googleResponse = jQuery('#g-recaptcha-response').val();
     return googleResponse.length > 0;
   }, Drupal.t("Veuillez valider le captcha"));
@@ -255,27 +260,32 @@
     return this.optional(element) || (value.length >= 5);
   });
 
+  jQuery.validator.addMethod("pattern", function (value, element, param) {
+    if (this.optional(element)) {
+      return true;
+    }
+    if (typeof param === "string") {
+      param = new RegExp("^(?:" + param + ")$");
+    }
+    return param.test(value);
+  }, jQuery.validator.format("this is not in valid format"));
+  //}, Drupal.t('Please enter a valid format'));
+
   // override default messages for specific form field
   $.validator.messages.required = function (param, input) {
     var _input = $(input),
       _name = "";
-
     if (typeof _input.data('webform-required-error') !== 'undefined') {
       return _input.data('webform-required-error');
-    }
-    else if (_input.is("file") === true) {
+    } else if (_input.is("file") === true) {
       _name = _input.parents('.form-managed-filed').find('.managed-file-placeholder').text();
-    }
-    else if (_input.is("textarea") === true) {
+    } else if (_input.is("textarea") === true) {
       _name = _input.parents('.form-type-textarea').find('label').text();
-    }
-    else if (_input.attr('type') == 'radio') {
+    } else if (_input.attr('type') === 'radio') {
       _name = _input.parents('.form-type-radios').find('> label').text();
-    }
-    else if (_input.is("select") === true) {
+    } else if (_input.is("select") === true) {
       _name = $(input).parents('.form-type-select').find(' > label').text();
-    }
-    else {
+    } else {
       _name = _input.parent('.form-group').find('label').text();
     }
 
@@ -291,13 +301,13 @@
     });
   };
 
+
   Drupal.vactory.utility.formValidation = function () {
 
     $(document).ready(function () {
       // the form container/parents
       // add selector of forms
       var $_forms = $('.webform-submission-form, .js-form-control');
-
       // add validation for forms
       if ($_forms.length) {
         // foreach form
@@ -312,7 +322,6 @@
 
           $(this).parent().prepend(_errorsHTML);
 
-
           // unhighlight radios buttons group
           _this.find('input[type=radio]').each(function () {
             $(this).change(function () {
@@ -326,19 +335,15 @@
             errorLabelContainer: $('#' + _formid),
           });
 
-
-          jQuery.extend(jQuery.validator.messages, {
-            email: Drupal.t("Please enter a valid email address."),
+          // add rule for a files inputs
+          jQuery('input[name^="file"]').each(function () {
+            if ($(this).parents('.form-type-managed-file').find(' > label').hasClass('form-required')) {
+              $(this).rules('add', {
+                required: true
+              });
+            }
           });
 
-          jQuery('input[type="file"]').each(function() {
-            var $self = $(this);
-            if($self.find('.webform-document-file').hasClass('required')) {
-              $self.rules('add', {
-                required: true,
-              })
-            }
-          })
 
         }); // end foreach
       } //end if
